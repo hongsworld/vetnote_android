@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.4.2.min.js"></script>
+    <script src="js/monaca.js"></script>
+    <script src="js/monaca.viewport.js"></script>
+
+    <title>SnuVet</title>
+    <link rel="stylesheet" type="text/css" href="css/pages.css" />
+    <script type="text/javascript" src="js/tappable.js"></script>
+    <script type="text/javascript" src="js/style.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/pages.js"></script>
+    <link href="css/mobiscroll.custom-2.10.1.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/mobiscroll.custom-2.10.1.min.js" type="text/javascript"></script>
+</head>
+<script>
+  monaca.viewport({width: "device-width"});
+</script>
+<body>
+
+<div data-role="page" id="index">
+    <div class = "page-wrap">
+      <div class = "page_top">
+        <div class = "page_top_by_3" id="logbook_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  로그북
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="comment_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  실습일지
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="qna_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  Q&A
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "calender_box">
+          <div class ="calender_box_lt" id="datepicker_logbook">
+            <div class ="calender_image">
+              <div class = "absolute_center calender_image_back">
+              </div>
+            </div>
+            <div class = "calender_txt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = " inner">
+                    <input class ="date" id="datepicker_date_logbook">
+                  </div>
+                </div>
+              </div>
+              <!-- 이부분은 요일 적용되면 다시
+              <div class = "day" id="datepicker_day_logbook">
+                Thu
+              </div>
+              -->
+            </div>
+          </div>
+          <script>
+          $(document).ready(function(){
+            $(function(){ $("#datepicker_date_logbook").mobiscroll($.extend({
+              preset : 'calendar',
+              controls:['calendar'],
+              calendarHeight:['500px']
+              },
+              {
+              theme: "ios7",
+              mode: "scroller",
+              display: "bottom",
+              lang: "english"
+              })
+            );
+            });
+          var today = new Date()
+          var dd = today.getDate();
+          var mm = today.getMonth() + 1;
+          var yyyy = today.getFullYear();
+          if(dd<10) {
+              dd='0'+dd
+          } 
+
+          if(mm<10) {
+              mm='0'+mm
+          } 
+          var date = yyyy + ". " + mm + ". " + dd;
+          var today = new Date()
+          var weekday = new Array(7);
+          weekday[0]=  "Sunday";
+          weekday[1] = "Monday";
+          weekday[2] = "Tuesday";
+          weekday[3] = "Wednesday";
+          weekday[4] = "Thursday";
+          weekday[5] = "Friday";
+          weekday[6] = "Saturday";
+
+          var day = weekday[today.getDay()];
+
+
+          $("#datepicker_date_logbook").val(date);
+          $("#datepicker_day_logbook").text(day)
+          });
+          </script>
+          <div class ="calender_box_rt" id="logbook_list_btn">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+            + 오늘의 실습 수행하기 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+        <div id="logbook_list">
+          <div class = "new_logbook">
+            <div class = "new_camera_ic">
+            </div>
+            <div class= "new_text_box" id="logbook_list_btn">
+              <div class ="new_text_box_top">
+                <div class = "new_text_box_top_txt">
+                  로그북을 기록해주세요
+                </div>
+                <div class = "new_text_box_top_time">
+                  00:00 am
+                </div>
+              </div>
+              <div class ="new_text_box_bottom">
+              </div>
+            </div>
+          </div>
+
+          <div class = "each_logbook">
+          </div> 
+
+
+          <div class = "new_logbook">
+            <div class= "new_text_box">
+              <div class ="new_text_box_top">
+                <div class = "new_text_box_top_txt">
+                  Skin Scraping
+                </div>
+                <div class = "new_text_box_top_time">
+                  10:00 am
+                </div>
+              </div>
+              <div class ="new_text_box_bottom">
+                <div class = "outer">
+                  <div class = "middle">
+                    <div class = "inner">
+                      <div class = "new_text_box_bottom_txt ">
+                        검토중
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class = "new_logbook">
+            <div class= "new_text_box">
+              <div class ="new_text_box_top">
+                <div class = "new_text_box_top_txt">
+                  Skin Scraping
+                </div>
+                <div class = "new_text_box_top_time" style="margin-bottom:0">
+                  10:00 am
+                </div>
+                <div class = "new_text_box_top_time" id= "">
+                  10:00 am
+                  메모인것입니
+                </div>                
+              </div>
+              <div class ="new_text_box_bottom">
+                <div class = "outer">
+                  <div class = "middle">
+                    <div class = "inner">
+                      <div class = "new_text_box_bottom_txt ">
+                        확인완료
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- page body end -->
+    </div><!-- page wrap -->
+  </div><!-- page index end -->
+
+
+
+  
+
+
+
+
+
+
+  <div data-role="page" id="recorded_log_detail">
+    <div class = "page-wrap">
+      <div class = "page_top2">
+
+
+        <div class = "each_log_list2">
+          <div class = "each_log_list_lt">
+            <div class = "each_log_list_lt_arrow absolute_center">
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt" id="questlarge_title-recorded_log">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+
+      </div> <!-- page top end -->
+      <div class = "page_body2">
+        <div class = "log_detail_body_box" id="questsmall_list-recorded_log">
+        </div> <!-- detail box end -->
+
+        <div class = "detail_picture_box-none" id="detail_picture_box-recorded_log">
+        </div>
+        <div class = "log_detail_case_box" style="height:auto;">
+          <div id="div_log_memo" style="border:0; margin:0; padding:20px; position:relative; height:100%;   
+  white-space:pre-line;
+  word-wrap:break-word; font-size:36px" >
+     
+          </div>
+        </div>        
+        <div class = "log_detail_case_box">
+          <div class = "log_detail_case_lt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "log_detail_case_rt_txt" id="case_number-recorded_log">
+                    Case # 01 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 여기서부터 css hazard 저지름-->
+          <div class = "log_detail_case_rt" id="delete_userquest" style="background:#CDBEE4">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "log_detail_case_rt_txt" style="color:#fff" >
+          <!-- 여기까지 css hazard 저지름-->
+                    - 삭제
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div> <!-- page body end -->
+              
+
+    </div><!-- page wrap -->
+  </div><!-- page recoreded log detail-->
+
+
+
+  <div data-role="page" id="log_detail">
+    <div class = "page-wrap">
+      <div class = "page_body2">
+
+        <div class = "each_log_list2">
+          <div class = "each_log_list_lt">
+            <div class = "each_log_list_lt_arrow absolute_center">
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt" id="questlarge_title">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <div class = "log_detail_body_box" id="questsmall_list">
+          <div class = "log_detail_body_box_each">
+            <div class = "each_log_list_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_log_list_lt_txt ">
+                      1
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_log_list_rt">
+              <div class = "each_log_list_rt_txt">
+                Dermatologic Examination
+                Dermatologic Examination
+                Dermatologic Examination
+                Dermatologic Examination
+                Dermatologic Examination
+hi
+              </div>
+            </div>
+            <div class = "clear">
+            </div>
+          </div>
+    
+          <div class = "by_log_by">
+            <div class = "by_log_by_inner absolute_center">
+            </div>
+          </div>
+          
+
+          <div class = "log_detail_body_box_each">
+            <div class = "each_log_list_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_log_list_lt_txt ">
+                      1
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_log_list_rt">
+              <div class = "each_log_list_rt_txt">
+                Dermatologic Examination
+                Dermatologic Examination
+                Dermatologic Examination
+                Dermatologic Examination
+                Dermatologic Examination
+hi
+              </div>
+            </div>
+            <div class = "clear">
+            </div>
+
+          </div>
+        </div> <!-- detail box end -->
+
+        <div class = "log_detail_camera_box">
+
+
+          <div class = "camera_box" id="camera">
+            <div id="dropbox_logbook" class="span6 offset3 dropbox">
+              <label>
+                <form enctype="multipart/form-data" id="formData_logbook" action="/upload" method="post">
+                  <input id="image_logbook" name="image" type="hidden">
+                  <input id="hidden_case_number" name="number" type="hidden">
+                  <input id="quest_id" name="quest_id" type="hidden">
+                  <input id="hidden_log_memo" name="log_memo" type="hidden">
+                </form>
+              </label>
+              <button id="logbook_write_camera" class="log_detail_camera_ic absolute_center" onclick="$('#image_logbook').click()"></button>
+            </div>
+          </div>
+        </div>
+        
+        <div class = "log_detail_case_box" style="height:200px;">
+          <textarea id="textarea_log_memo" style="border:0; margin:0; padding:20px; position:relative; height:100%;" placeholder="메모를 입력하세요"></textarea>
+        </div>
+        <div class = "log_detail_case_box">
+          <div class = "log_detail_case_lt">
+            <input class = "log_detail_case_input" id="input_case_number" placeholder="케이스 번호를 입력하세요">
+          </div>
+          <div class = "log_detail_case_rt" id="submit_logbook">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "log_detail_case_rt_txt">
+                    + 제출
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div> <!-- page body end -->
+              
+
+    </div><!-- page wrap -->
+  </div><!-- page qnadetail-->
+
+
+<div data-role="page" id="comment" temp="원래comment_write였">
+
+  <script>
+          $(document).ready(function(){
+            $(function(){ $("#comment_calendar").mobiscroll($.extend({
+              preset : 'calendar',
+              controls:['calendar'],
+              calendarHeight:['500px']
+              },
+              {
+              theme: "ios7",
+              mode: "scroller",
+              display: "bottom",
+              lang: "english"
+              })
+            );
+            });
+            var today = new Date()
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if(dd<10) {
+                dd='0'+dd
+            } 
+
+            if(mm<10) {
+                mm='0'+mm
+            } 
+            var date = yyyy + ". " + mm + ". " + dd;
+            var today = new Date()
+            var weekday = new Array(7);
+            weekday[0]=  "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+
+            var day = weekday[today.getDay()];
+
+
+            $("#comment_calendar").val(date);
+            $("#comment_calendar").text(date)
+          });
+    </script>   
+    <div class = "page-wrap">
+      <div class = "page_top">
+        <div class = "page_top_by_3" id="logbook_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  로그북
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="comment_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  실습일지
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="qna_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  Q&A
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "comment-label">
+          날짜
+        </div>
+        <div class = "calender_box" style="margin-top:10px;">
+          <div class = "outer">
+            <div class = "middle">
+              <div class = " inner">
+                <div class="calender_box_rt_txt" style="text-align:left; color:#9f9fa0; padding:20px;" id="comment_calendar">
+          2014.09.15.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+
+        <div class = "comment-label">
+          오늘 로그북
+        </div>
+
+
+        <div id='comment_loglist' >
+
+
+          <div class = 'calender_box' style='margin-top:10px; margin-bottom:0px;'>            
+              <div class = 'outer'>
+                <div class = 'middle'>
+                  <div class = 'inner'>
+                    <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:20px;'>
+                      #1 Epidermal cytology
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div> <!-- page calender box end -->
+
+
+        
+          <div class = 'calender_box' style='margin-top:0px; margin-bottom:0px; border-top:0;'>
+            <div class = 'calender_box-lt'>
+              <div style='padding:20px'>
+                케이스번호
+              </div>
+            </div>
+            <div class = 'calender_box-rt'>
+              <div class = 'outer'>
+                <div class = 'middle'>
+                  <div class = ' inner'>
+                    <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:20px;'>
+                      8
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- page calender box end -->
+          <div class = 'calender_box' style='margin-top:0px; border-top:0px;min-height:90px; height:auto;'>
+            <div class='log_img' style='position:relative;
+            height:auto; background:black;'>
+            </div>  
+            <script>
+            $(document).ready(function() {
+              $('.log_img').height($('.log_img').width());
+               console.log($('.log_img').width())
+               })
+            </script>
+            <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:20px 20px 20px 40px;  min-height:90px;'>
+              <div style='position:realtive; white-space:pre-line; word-wrap:break-word; '>memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology</div> 
+              
+            </div>
+          </div> <!-- page calender box end -->
+
+          <div class = "calender_box" style="margin-top:10px; margin-bottom:20px;">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt" style="text-align:left; color:#9f9fa0; padding:20px;">
+                    작성된 로그북이 없습니다
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- page calender box end -->
+        
+
+        </div>
+
+
+
+        <div class = "comment-label">
+          성찰일지(느낀점, 더 공부해야할 사항)
+        </div>
+        <div class = "comment_box">
+          <textarea style="padding:20px;" placeholder="성찰일지를 입력해주세요" id="textarea_student_comment1"></textarea>
+        </div>
+
+        <div class = "comment-label">
+          실습 외 활동(세미나 등)
+        </div>
+        <div class = "comment_box">
+          <textarea style="padding:20px" placeholder="실습 외 활동을 작성해주세요" id="textarea_student_comment2"></textarea>
+        </div>
+
+
+        <div class = "calender_box">
+          <div class = "calender_box2_lt" id="cancel_comment">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    취소하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "calender_box2_rt" id="submit_comment">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    + 등록하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div> <!-- page calender box end -->
+
+      </div> <!-- page body end -->
+
+
+    </div><!-- page wrap -->
+  </div><!-- page comment_write-->
+
+
+
+
+  <div data-role="page" id="comment_temp">
+    <div class = "page-wrap">
+      <div class = "page_top">
+        <div class = "page_top_by_3" id="logbook_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  로그북
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="comment_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  실습일지
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="qna_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  Q&A
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "calender_box">
+          <div class ="calender_box_lt">
+            <div class ="calender_image">
+              <div class = "absolute_center calender_image_back">
+              </div>
+            </div>
+            <div class = "calender_txt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = " inner">
+                    <input class ="date" id="datepicker_date_comment">
+                  </div>
+                </div>
+              </div>
+              <!-- 이부분은 요일 적용되면 다시 
+              <div class = "day" id="datepicker_day_comment">
+                Thu
+              </div>
+              -->
+            </div>
+          </div>
+          <script>
+          $(document).ready(function(){
+            $(function(){ $("#datepicker_date_comment").mobiscroll($.extend({
+              preset : 'calendar',
+              controls:['calendar'],
+              calendarHeight:['500px']
+              },
+              {
+              theme: "ios7",
+              mode: "scroller",
+              display: "bottom",
+              lang: "english"
+              })
+            );
+            });
+          var today = new Date()
+          var dd = today.getDate();
+          var mm = today.getMonth() + 1;
+          var yyyy = today.getFullYear();
+          if(dd<10) {
+              dd='0'+dd
+          } 
+
+          if(mm<10) {
+              mm='0'+mm
+          } 
+          var date = yyyy + ". " + mm + ". " + dd;
+          var today = new Date()
+          var weekday = new Array(7);
+          weekday[0]=  "Sunday";
+          weekday[1] = "Monday";
+          weekday[2] = "Tuesday";
+          weekday[3] = "Wednesday";
+          weekday[4] = "Thursday";
+          weekday[5] = "Friday";
+          weekday[6] = "Saturday";
+
+          var day = weekday[today.getDay()];
+
+
+          //$("#datepicker_date_comment").val(date);
+          // $("#datepicker_day_comment").text(day)
+          });
+          </script>
+          <div class ="calender_box_rt" id="comment_write_btn">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+            + 오늘의 실습일지 작성하기 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+  
+        <div class = "comment_box">
+          <div class = "comment_box_top">
+            <div class = "comment_box_top_lt">
+              <div class = "comment_box_top_lt_txt">
+                학생실습일지
+              </div>
+            </div>
+            <div class = "comment_box_top_rt">
+              <div class = "comment_box_top_rt_txt">
+              </div>
+            </div>
+            <div class = "clear">
+            </div>
+          </div>
+          <div class = "comment_box_bottom">
+            <div class = "comment_box_bottom_txt" id="student_comment_view">작성됬다!
+zzz
+zzz
+zzzzz
+            </div>
+          </div>
+        </div>
+
+
+        <div class = "comment_box">
+          <div class = "comment_box_top">
+            <div class = "comment_box_top_lt">
+              <div class = "comment_box_top_lt_txt">
+                교수코멘트
+              </div>
+            </div>
+            <div class = "comment_box_top_rt">
+              <div class = "comment_box_top_rt_txt">
+              </div>
+            </div>
+            <div class = "clear">
+            </div>
+          </div>
+          <div class = "comment_box_bottom">
+            <div class = "comment_box_bottom_txt" id="professor_comment_view">작성됬다!
+zzz
+zzz
+zzzzz
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div><!-- page body end -->
+    </div><!-- page wrap -->
+  </div><!-- page comment end -->
+
+
+
+
+  <div data-role="page" id="evaluation">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  실습 평가
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+
+
+        <form action="/api/evaluation_process" method="POST" id = "valuation">
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      1
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                  나는 실습 시작 전에 실습 프로그램에 대한 충분한 정보를 얻었다.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum1" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum1" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum1" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum1" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum1" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      2
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                        실습 기간 동안 충분한 실습 기회와 시간이 주어졌다
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum2" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum2" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum2" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum2" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum2" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      3
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                        실습프로그램의 내용이 나의 임상기술을 향상시키는 데에 도움이 되었다.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum3" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum3" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum3" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum3" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum3" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      4
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                        실습내용과 관련된 자료가 제공되었다
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum4" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum4" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum4" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum4" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum4" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      5
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                        실습동안에 충분한 수의 케이스를 볼 수 있었다.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum5" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum5" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum5" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum5" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum5" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      6
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                        실습 동안에 나의 질문과 요청에 적절한 답과 도움을 얻을 수 있었다.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum6" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum6" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum6" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum6" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum6" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      7
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                        실습 동안 경험한 것에 전반적으로 만족한다.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum7" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum7" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum7" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum7" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum7" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+
+
+          <div class = "each_evaluation_colum">
+            <div class = each_evaluation_colum_lt>
+              <div class = "outer">
+                <div class ="middle">
+                  <div class = "inner">
+                    <div class = "eval_number">
+                      8
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = each_evaluation_colum_rt>
+              <div class  = each_evaluation_colum_rt1>
+                <div class = "outer">
+                  <div class ="middle">
+                    <div class = "inner">
+                      <div class = "eval_txt">
+                        실습이 끝난 후 나의 임상역량이 향상되었다.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class  = each_evaluation_colum_rt2>
+                <div class="ui-field-contain" style="margin:0;">
+                    <fieldset data-role="controlgroup" data-type="horizontal" style="text-align:center;">
+
+                      <input type="radio" name="colum8" id="radio-choice-1" value="1" >
+                      <label class ="eval_radio_label" for="radio-choice-1" style=" padding:20px 0px;border-radius:0;">1</label>
+
+                      <input type="radio" name="colum8" id="radio-choice-2" value="2" >
+                      <label class="eval_radio_label" for="radio-choice-2" style=" padding:20px 0px;border-radius:0;">2</label>
+
+                      <input type="radio" name="colum8" id="radio-choice-3" value="3">
+                      <label class="eval_radio_label" for="radio-choice-3" style=" padding:20px 0px;border-radius:0;">3</label>
+
+                      <input type="radio" name="colum8" id="radio-choice-4" value="4">
+                      <label class="eval_radio_label" for="radio-choice-4" style=" padding:20px 0px;border-radius:0;">4</label>
+                      <input type="radio" name="colum8" id="radio-choice-5" value="5">
+                      <label class="eval_radio_label" for="radio-choice-5" style=" padding:20px 0px;border-radius:0;">5</label>
+                    </fieldset>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </form> 
+
+        <input type="button" value="Submit" id="evaluation_submit" style="width:100%; line-height:120px !important; color:#fff;" >                                                                            
+      </div> <!-- page body end -->
+    </div> <!-- page wrap end -->
+  </div> <!-- evaluation end -->
+
+
+
+  <div data-role="page" id="menu">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  이주의 식단
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "colum_box" id="menu_box">
+
+
+          <div class = "each_colum" id="colum1">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      실습담당자test
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+              <div class = "each_menu">
+                <div class = "each_menu_lt lunch">
+                </div>
+                <div class = "each_menu_rt">
+                  <div class = "outer">
+                    <div class = "middle">
+                      <div class = "inner">
+                        <div class = "each_menu_rt_txt">
+                        hiSdfajsdlkfjasdkl;faj
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class = "each_menu">
+                <div class = "each_menu_lt dinner">
+                </div>
+                <div class = "each_menu_rt">
+                  <div class = "outer">
+                    <div class = "middle">
+                      <div class = "inner">
+                        <div class = "each_menu_rt_txt">
+                        hiSdfajsdlkfjasdkl;faj
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+
+      </div> <!-- page body end -->
+    </div> <!-- page wrap end -->
+  </div> <!-- menu end -->
+
+
+
+
+
+
+
+  <div data-role="page" id="syllabus">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  실습지침
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "colum_box">
+
+
+          <div class = "each_colum" id="colum1">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      실습담당자
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+          <div class = "each_colum" id="colum2">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      연락처
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">02-880-8670
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+          <div class = "each_colum" id="colum3">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      근무시간 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">8:00 - 18:00
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+          <div class = "each_colum" id="colum4">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      일정표
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">월: 오리엔테이션,
+                          가문진표작성법
+                          화: 진료, 케이스리뷰
+                          수: 오전 진료, 케이스리뷰
+                          목: 약욕법, 검이경 사용법,
+                              피부병변평가
+                              금: 오전진료, 케이스리뷰
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+          <div class = "each_colum" id="colum5">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      일과시간표
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">08:00 출근
+                      08:30 아침조회
+                      09:00 오전진료
+                      12:00 점심
+                      13:00 오후진료
+                      17:00 케이스리뷰
+                      18:00 퇴근
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+          <div class = "each_colum" id="colum6">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      실습목표
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">실제 환자의 문제점을 파악하고 구체적으로 기술할 수 있는 능력을 배양하며, 문제해결을 위한 진단과정과 치료과정에 관한 전반적 진료행위를 통해 실제 피부과영역의 진료능력을 향상함을 최종 목표로 삼는다.
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+          <div class = "each_colum" id="colum7">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      평가항목
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">실제 환자의 문제점을 파악하고 구체적으로 기술할 수 있는 능력을 배양하며, 문제해결을 위한 진단과정과 치료과정에 관한 전반적 진료행위를 통해 실제 피부과영역의 진료능력을 향상함을 최종 목표로 삼는다.
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+          <div class = "each_colum" id="colum8">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      참고서적
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">실제 환자의 문제점을 파악하고 구체적으로 기술할 수 있는 능력을 배양하며, 문제해결을 위한 진단과정과 치료과정에 관한 전반적 진료행위를 통해 실제 피부과영역의 진료능력을 향상함을 최종 목표로 삼는다.
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+          <div class = "each_colum" id="colum9">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      추가기초교육
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">실제 환자의 문제점을 파악하고 구체적으로 기술할 수 있는 능력을 배양하며, 문제해결을 위한 진단과정과 치료과정에 관한 전반적 진료행위를 통해 실제 피부과영역의 진료능력을 향상함을 최종 목표로 삼는다.
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+
+          <div class = "each_colum" id="colum10">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      비고
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">실제 환자의 문제점을 파악하고 구체적으로 기술할 수 있는 능력을 배양하며, 문제해결을 위한 진단과정과 치료과정에 관한 전반적 진료행위를 통해 실제 피부과영역의 진료능력을 향상함을 최종 목표로 삼는다.
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div> <!-- page body end -->
+    </div> <!-- page wrap end -->
+  </div> <!-- syllabus end -->
+
+
+
+  <div data-role="page" id="selectSyllabus">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  실습지침 목록
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+
+
+      <div class = "page_body" id="selectSyllabus_list">
+        <div class = "each_log_list" id="each_selectSyllabus">
+          <div class = "each_log_list_lt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_lt_txt">
+                    1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+
+
+
+      </div><!-- page body end -->
+    </div><!-- page wrap -->
+  </div><!-- page selectSyllabus end -->
+
+
+
+  <div data-role="page" id="selectLogbook">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt">
+                  로그북 전공을 선택하세요
+                </div>
+                <!--
+                <div class = "fit_txt-active">
+                  로그북 목록
+                </div>
+                -->
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+
+
+      <div class = "page_body" id="selectLogbook_list">
+        <div class = "each_log_list">
+          <div class = "each_log_list_lt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_lt_txt">
+                    1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+
+
+
+      </div><!-- page body end -->
+    </div><!-- page wrap -->
+  </div><!-- page selectLogbook end -->
+
+
+
+
+
+
+
+  
+
+
+  <div data-role="page" id="qna_detail">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  QnA
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "calender_box">
+          <div class = "outer">
+            <div class = "middle">
+              <div class = " inner">
+                <div class="calender_box_rt_txt left margin20" id="qna_detail_title">
+                    hi
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+
+        <div class = "comment_box">
+          <div class = "comment_box_txt" id="qna_detail_content">
+
+          hihi
+          </div>
+        </div>
+
+
+        <div class = "detail_picture_box-none" id="detail_picture_box">
+        </div>
+
+
+
+        <div class = "calender_box">
+          <div class = "calender_box2_lt" id="cancel_qna">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    돌아가기
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "calender_box2_rt" id="modify_qna">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    + 수정하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div> <!-- page calender box end -->
+      </div> <!-- page body -->
+
+
+
+    </div><!-- page wrap -->
+  </div><!-- page qna_detail-->
+
+  <div data-role="page" id="detail_notice">
+    <div class = "page-wrap">
+      <div class = "page_body2">
+        <div class = "detail_notice_title">
+          <div class = "each_log_list_lt">
+            <div class = "each_log_list_lt_arrow absolute_center">
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class ="detail_notice_title-inner">
+              <div class = "detail_notice_title_txt" id="notice_title">
+                공지사항입니다 THIS IS NOTIFICATIONS THIS IS NOTIFICATIONS THIS IS NOTIFICATIONS
+              </div>
+            </div>
+            <div class = "each_notice_date">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_notice_date_txt" id="notice_created_at">
+                      2014. 05. 16.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "clear">
+          </div>
+        </div> 
+
+
+        <div class = "notice_box">
+          <div class = "comment_box_bottom">
+            <div class = "notice_box_txt" id="notice_content">작성됬다!
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+  zzz
+  zzzzz
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div><!-- page wrap -->
+  </div><!-- page detail_notice end-->
+
+
+
+  <div data-role="page" id="notice">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  공지사항
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div id="notice_box">
+
+
+          <div class = "each_notice_top">
+            <div class ="each_notice_title">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_notice_title_txt">
+                      공지사항입니다 asdjfla;sdjfals;dfjadls;fjasdl;fkasjdf;lasdkjfas;dlfjasdl;fkajsdlk
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_notice_date">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_notice_date_txt">
+                      2014. 05. 16.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class = "each_notice">
+            <div class ="each_notice_title">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_notice_title_txt">
+                      공지사항입니다 asdjfla;sdjfals;dfjadls;fjasdl;fkasjdf;lasdkjfas;dlfjasdl;fkajsdlk
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_notice_date">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_notice_date_txt">
+                      2014. 05. 16.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- notice box-->
+      </div> <!-- page body-->
+    </div><!-- page wrap -->
+  </div><!-- page notice end -->
+
+  <div data-role="page" id="qna_modify">
+    <div class = "page-wrap">
+      <div class = "page_body2">
+        <div class = "calender_box">
+          <div class = "outer">
+            <div class = "middle">
+              <div class = " inner">
+                <div class="calender_box_rt_txt">
+                  <input id="input_title-modify" placeholder="제목을 입력해주세요">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+
+        <div class = "comment_box">
+          <textarea id="input_content-modify" placeholder="내용을 입력해주세요"></textarea>
+        </div>
+
+
+        <div class = "log_detail_camera_box">
+          <div class = "camera_box" id="camera">
+            <div id="dropbox" class="span6 offset3 dropbox">
+              <label>
+                <form enctype="multipart/form-data" id="formData_qna-modify" action="/upload" method="post">
+                  <input id="image-modify" name="image" type="hidden"/>
+                  <input id="hidden_title-modify" name="title" type="hidden">
+                  <input id="hidden_content-modify" name="content" type="hidden">
+                  <input id="hidden_qna_id-modify" name="selectedQnaId" type="hidden">
+                </form>
+              </label>
+              <button id="modify_write_camera" class="log_detail_camera_ic absolute_center" onclick="$('#image-modify').click()"></button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class = "calender_box">
+          <div class = "calender_box2_lt" id="cancel_qna-modify">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    취소하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "calender_box2_rt" id="delete_qna">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    - 삭제하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div> <!-- page calender box end -->
+        <div class = "calender_box" id="modify_process_qna_btn">
+          <div class = "outer">
+            <div class = "middle">
+              <div class = " inner">
+                <div class="calender_box_rt_txt">
+                  수정하기
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+      </div> <!-- page body2 end-->
+
+
+
+    </div><!-- page wrap -->
+  </div><!-- page qna_write-->
+
+
+  <div data-role="page" id="qna_write">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  QnA 작성
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "calender_box">
+          <div class = "outer">
+            <div class = "middle">
+              <div class = " inner">
+                <div class="calender_box_rt_txt">
+                  <input id="input_title" placeholder="제목을 입력해주세요">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+
+        <div class = "comment_box">
+          <textarea id="input_content" placeholder="내용을 입력해주세요"></textarea>
+        </div>
+
+
+        <div class = "log_detail_camera_box">
+          <div class = "camera_box" id="camera">
+            <div id="dropbox" class="span6 offset3 dropbox">
+              <label>
+                <form enctype="multipart/form-data" id="formData_qna" action="/upload" method="post">
+                  <input id="image" name="image" type="hidden"/>
+                  <input id="hidden_title" name="title" type="hidden">
+                  <input id="hidden_content" name="content" type="hidden">
+                  <input id="hidden_major_id" name="major_id" type="hidden">
+                </form>
+              </label>
+              <button id="qna_write_camera" class="log_detail_camera_ic absolute_center" onclick="$('#image').click()"></button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class = "calender_box">
+          <div class = "calender_box2_lt" id="cancel_qna">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    취소하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "calender_box2_rt" id="submit_qna">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt">
+                    + 등록하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div> <!-- page calender box end -->
+
+      </div> <!-- page body end -->
+
+
+    </div><!-- page wrap -->
+  </div><!-- page qna_write-->
+
+
+
+  
+
+
+  <div data-role="page" id="qna">
+    <div class = "page-wrap">
+      <div class = "page_top">
+        <div class = "page_top_by_3" id="logbook_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  로그북
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="comment_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  실습일지
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="qna_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  Q&A
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "calender_box" id="qna_write_btn">
+          <div class = "outer">
+            <div class = "middle">
+              <div class = " inner">
+                <div class="calender_box_rt_txt">
+          + 질문하기
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- page calender box end -->
+
+        <div id="qna_list_box">
+          <div class = "new_logbook">
+            <div class = "new_camera_ic">
+            </div>
+            <div class = "calc_new_text_box">
+              <div class= "new_text_box">
+                <div class ="new_text_box_top">
+                  <div class = "new_text_box_top_txt">
+                    홍길동님의 질문
+                  </div>
+                  <div class = "new_text_box_top_content">       저의 질문
+    있습니다
+    있습니다
+    있습니다
+    있습니다
+    질문
+    질문
+    질문
+    질문
+                  </div>
+                  <div class = "new_text_box_top_time">
+                    05/15 04:00 pm
+                  </div>
+                </div>
+                <div class ="new_text_box_bottom">
+                  <div class = "outer">
+                    <div class = "middle">
+                      <div class = "inner">
+                        <div class = "new_text_box_bottom_txt ">
+                          검토중
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class = "new_logbook">
+            <div class = "new_camera_ic">
+            </div>
+            <div class= "new_text_box_mine" id="each_qna_list" value="">
+              <div class ="new_text_box_top">
+                <div class = "new_text_box_top_txt_mine">
+                  나의 질문
+                </div>
+                <div class = "new_text_box_top_content_mine"> Skein Scraping에 관하여 
+  있습니다
+  있습니다
+                </div>
+                <div class = "new_text_box_top_time_mine">
+                  05/15 04:00 pm
+                </div>
+              </div>
+              <div class ="new_text_box_bottom">
+                <div class = "outer">
+                  <div class = "middle">
+                    <div class = "inner">
+                      <div class = "new_text_box_bottom_txt_mine ">
+                        답변완료
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div><!-- page body end -->
+    </div><!-- page wrap -->
+  </div><!-- page qna end -->
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <div data-role="page" id="log_list">
+    <div class = "page-wrap">
+      <div class = "page_top">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active" id="logbook_major_name_list">
+                  로그북 목록
+                </div>
+              </div>
+            </div>
+          </div>
+      </div> <!-- page top end -->
+
+
+      <div class = "page_body" id="questlarge_list">
+        <div class = "each_log_list">
+          <div class = "each_log_list_lt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_lt_txt">
+                    1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+        <div class = "each_log_list">
+          <div class = "each_log_list_lt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_lt_txt">
+                    1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+
+
+        <div class = "each_log_list">
+          <div class = "each_log_list_lt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_lt_txt">
+                    1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+
+        <div class = "each_log_list">
+          <div class = "each_log_list_lt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_lt_txt">
+                    1
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class = "each_log_list_rt">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = "inner">
+                  <div class = "each_log_list_rt_txt">
+                    Dermatologic Examination
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+
+
+
+      </div><!-- page body end -->
+    </div><!-- page wrap -->
+  </div><!-- page log list end -->
+
+
+  
+  <div data-role="page" id="example">
+    <div class = "page-wrap">
+
+    </div><!-- page wrap -->
+  </div><!-- page qnadetail-->
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
