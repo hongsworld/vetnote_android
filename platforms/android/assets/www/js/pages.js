@@ -1,12 +1,64 @@
 var host = "http://asanapp.com:4321"
-var user_token ="IGCOv3h05BOr2KIzvG9cjw"
+var user_token  = window.localStorage.getItem("user_token")
 //임시 토큰 
 
+  function go_report() {
+    $.ajax({
+      url: host + "/api/report",
+      type:"POST",
+      data: {
+        user_token : user_token
+      },
+      success: function(data) {
+        $("#report_loglist").html("")
+        for (i = 0; i < data.title.length; i++) {
+          $("#report_loglist").append(" " +
+
+            "<div class = 'each_report_log_box' id='each_report_log_box' value=" + data.log_id[i] + ">" +
+              "<div class = 'report_log_lt'>" +
+                "<div class = 'report_log_title'>" +
+                  "<div class = 'report_log_memo_txt'>" +
+                    data.log_date[i] + " " + data.title[i] + 
+                  "</div>"  +
+                "</div>" +
+                "<div class = 'report_log_memo'>" +
+                  "<div class ='report_log_memo_txt'>" + data.memo[i] + "</div>" +
+                "</div>" +        
+              "</div>" +
+              "<div class = 'report_log_rt'>" +
+                "<div class = 'report_log_pic' style=background-image:url('" + host + "/img/" + data.img[i] + "') >" +
+                "</div>" +
+                "<div class = 'report_log_casenumber'> " +
+                  "<div class = 'report_log_casenumber_txt'>" + "#" + data.casenumber[i] + "</div>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+
+            "")
+        }
+        comment_text = ""
+        for (i = 0; i < data.comment_time.length; i++) {
+          comment_text += "시일 : " + data.comment_time[i] + "\n" +
+                    "성찰일지 : " + data.comment1[i] + "\n" + 
+                    "실습 외 활동 : " + data.comment2[i] +"\n\n"
+        }
+        $("#report_comment").val(comment_text)
+        $("#report_range_date").text(data.start_date + " - " + data.last_date)
+        location.replace("pages.html#report")
+      }
+    })
+  }
+
+
   function go_evaluation() {
+    window.localStorage.setItem("layer",0)
+    window.localStorage.setItem("depth",0)
     console.log("wtf")
     location.replace("pages.html#evaluation")
   }
   function go_menu() {
+    window.localStorage.setItem("layer",1)
+    window.localStorage.setItem("depth",0)
     $.ajax({
       url: host + "/api/menu" ,
       type: "POST",
@@ -77,6 +129,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
 
   }
   function noticeDetail(id) {
+    window.localStorage.setItem("layer",2)
+    window.localStorage.setItem("depth",1)
       $.ajax({
         url: host +  "/api/notice_detail" ,
         type: "POST",
@@ -99,6 +153,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
   }
 
   function noticeList() {
+    window.localStorage.setItem("layer",2)
+    window.localStorage.setItem("depth",0)
     $.ajax({
       url: host +  "/api/notice_list" ,
       type: "POST",
@@ -175,6 +231,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
   }
 
   function syllabus(majorId) {
+    window.localStorage.setItem("layer",3)
+    window.localStorage.setItem("depth",0)   
     if (majorId == null) {
       var selectedMajorId = window.localStorage.getItem("selectedMajorId")
     } else {
@@ -201,6 +259,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
 
 
   function selectLogbook() {
+    window.localStorage.setItem("layer",3)
+    window.localStorage.setItem("depth",1)
     $.ajax({
       url: host +  "/api/major_list" ,
       type: "POST",
@@ -234,6 +294,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
   }
 
   function selectSyllabus() {
+    window.localStorage.setItem("layer",4)
+    window.localStorage.setItem("depth",0)
     $.ajax({
       url: host +  "/api/major_list" ,
       type: "POST",
@@ -268,6 +330,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
 
 
   function questSmall(target) { 
+    window.localStorage.setItem("layer",5)
+    window.localStorage.setItem("depth",2)
         $.ajax({
           url: host +  "/quest/small" ,
           type: "POST",
@@ -315,6 +379,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
   }
 
   function questLarge(majorId) {
+    window.localStorage.setItem("layer",5)
+    window.localStorage.setItem("depth",1)
     if (majorId == null) {
       var selectedMajorId = window.localStorage.getItem("selectedMajorId")
     } else {
@@ -389,7 +455,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
     }
 
     function go_logbook(date) {
-      window.localStorage.setItem("selectedMajorId", 1);
+    window.localStorage.setItem("layer",5)
+    window.localStorage.setItem("depth",0)
       $.ajax({
         url: host +  "/api/daily_logbook" ,
         type: "POST",
@@ -595,7 +662,9 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
 
 
 
-    function go_comment(date) {
+    function go_comment(date) {    
+    window.localStorage.setItem("layer",6)
+    window.localStorage.setItem("depth",0)
       $.ajax({
         url: host +  "/api/daily_comment" ,
         type: "POST",
@@ -805,7 +874,9 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
     }
 
     function go_qna() {
-      window.localStorage.setItem("selectedMajorId", 1);
+    window.localStorage.setItem("layer",7)
+    window.localStorage.setItem("depth",0)
+//      window.localStorage.setItem("selectedMajorId", 1);
       $.ajax({
         url: host +  "/qna/list" ,
         type: "POST",
@@ -901,6 +972,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
     }
 
   function qnaDetail(id) {
+    window.localStorage.setItem("layer",7)
+    window.localStorage.setItem("depth",1)    
       $.ajax({
         url: host +  "/qna/detail" ,
         type: "POST",
@@ -968,6 +1041,8 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
 
 
   function qnaModify(id) {
+    window.localStorage.setItem("layer",7)
+    window.localStorage.setItem("depth",1)   
       $.ajax({
         url: host +  "/qna/modify" ,
         type: "POST",
@@ -1056,29 +1131,23 @@ var user_token ="IGCOv3h05BOr2KIzvG9cjw"
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
-
-
-
-
 function onDeviceReady() {
+
 
   pictureSource=navigator.camera.PictureSourceType;
   destinationType=navigator.camera.DestinationType;
 
 
-
   $(document).ready(function (){
 
     function localCamera(target,input){
-      navigator.camera.getPicture(onSuccess, onFail, { quality: 100,
+      navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
         destinationType: Camera.DestinationType.DATA_URL,
         sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
-        allowEdit : true,
         targetWidth: $(window).width(),
         targetHeight: $(window).width()
       });
       function onSuccess(imageData,target,input) {
-        alert("camera Success!")
         var image = $(target)
         image.css("background-image", "url('" + "data:image/jpeg;base64," + imageData + "')");
         image.css("background-repeat","no-repeat");
@@ -1089,13 +1158,14 @@ function onDeviceReady() {
       }
 
       function onFail(message) {
-          alert('Failed because: ' + message);
+          alert('사진 등록이 실패하였습니다 : ' + message);
       }
     }
 
 
-    //초기 해당 전공 설정
-    window.localStorage.setItem("selectedMajorId", 1);
+  //초기 해당 전공 설정
+ //   window.localStorage.setItem("selectedMajorId", 1);
+ //index에서 ajax로 전공 정보 받아오기로 처리 
     $.mobile.defaultPageTransition = "fade"
 
   //start
@@ -1195,7 +1265,7 @@ function onDeviceReady() {
     //submit comment
     tappable("#submit_comment", {
       onTap: function(e, target){
-        window.localStorage.setItem("selectedMajorId", 1);
+      
         $.ajax({
           url: host +  "/api/submit_comment" ,
           type: "POST",
@@ -1439,6 +1509,67 @@ function onDeviceReady() {
             }
          });
     });
+
+    //report_detail
+
+
+    tappable("#each_report_log_box", {
+      onTap: function(e, target){
+        window.localStorage.setItem("selectedUserQuest", $(target).attr("value"));
+        $.ajax({
+          url: host +  "/quest/read_userquest" ,
+          type: "POST",
+          data: {
+            userQuestId:$(target).attr("value")
+          },
+          success: function(data) {
+            if (data.error_code ==1) {
+              $("#div_log_memo").text(data.memo)
+              $("#questlarge_title-recorded_log").text(data.large_title)
+              $("#questsmall_list-recorded_log").html("")
+              for (i = 0; i < data.title.length; i++) {
+                $("#questsmall_list-recorded_log").append(" " +
+                  "<div class = 'log_detail_body_box_each'>" +
+                    "<div class = 'each_log_list_lt'>" +
+                      "<div class = 'outer'>" +
+                        "<div class = 'middle'>" +
+                          "<div class = 'inner'>" +
+                            "<div class = 'each_log_list_lt_txt '>" +
+                              (parseInt(i)+1) +
+                            "</div>" +
+                          "</div>" +
+                        "</div>" +
+                      "</div>" +
+                    "</div>" +
+                    "<div class = 'each_log_list_rt'>" +
+                      "<div class = 'each_log_list_rt_txt'>" +
+                        data.title[i] +
+                      "</div>" +
+                    "</div>" +
+                    "<div class = 'clear'>" +
+                    "</div>" +
+                  "<div class = 'by_log_by'>" +
+                    "<div class = 'by_log_by_inner absolute_center'>" +
+                    "</div>" +
+                  "</div>" +
+              "")}
+              if (data.picture_url != null) {
+                $("#detail_picture_box-recorded_log").removeClass("detail_picture_box-none").addClass("detail_picture_box");
+                $("#detail_picture_box-recorded_log").css("background-image","url('" + host  +"/img/" + data.picture_url + "')")
+              }else{
+                $("#detail_picture_box-recorded_log").css("display","none")  
+              }
+              $("#case_number-recorded_log").text("Case # " + data.case_number);
+              location.href= "pages.html#recorded_log_detail"
+            } else {
+              alert(data.error_msg);
+            }
+          }
+        });
+      }
+    });
+
+
 
 
     //camera

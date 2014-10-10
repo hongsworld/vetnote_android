@@ -1,0 +1,237 @@
+<style>
+*{
+  margin:0px;
+  padding:0px;
+}
+div.wrap{
+  margin:0;
+  padding:0;
+  float:left;
+  width:100%;
+  height:auto;
+}
+div.top{
+  position:relative;
+  width:100%;
+  height:200px;
+  background:#ffffff;
+  margin:0;
+  padding:0;
+  display:block;
+  border:0;
+}
+div.top-logo{
+  position:absolute;
+  margin-left:50%;
+  margin-top:38px;
+  left:-62px;
+  width:124px;
+  height:124px;
+  background-color:#212A5F;
+  border-radius:100%;
+  background-image:url('img/logo_ic.png');
+  background-repeat:no-repeat;
+  background-size:100%;
+  background-position:center center;
+}
+div.account-line{
+  position:relative;
+  width: 100%;
+  height: 1px;
+  background: #ced0d8;
+}
+
+div.container{
+  margin:0;
+  padding:0;
+  float:left;
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  background-color:#ffffff;
+}
+div.middle{
+  position:relative;
+
+  height:100%;
+  background-color:#fff;
+  border-radius: 3px;
+}
+div.bottom{
+  position:relative;
+  margin-left:50%;
+  left:-158px;
+  width: 316px;
+  height:60px;
+}
+div.bottom-box{
+  position:relative;
+  top:24px;
+  left:20px;
+  width:276px;
+  height:36px;
+  background-color:#ced0d8;
+  border-radius: 3px;
+}
+div.bottom-box-signup{
+  position:absolute;
+  width:100%;
+  top: 11px;
+  height:14px;
+  text-align:center;
+  color:#fefefe;
+  font-size:14px;
+  font-family: 'NanumGothic';
+  font-weight: bold;
+}
+
+
+div.middle-box-icon{
+  position:relative;
+  top: 60px;
+  margin-left: 50%;
+  left:-48px;
+  width:96px;
+  height:96px;
+  background-color:#ffffff;
+  background-image:url('img/snu_logo.png');
+  background-repeat:no-repeat;
+  background-size:100%;
+  background-position:center center;
+}
+div.middle-box-account{
+  position:relative;
+  top: 120px;
+  margin-left: 50%;
+  left: -138px;
+  width: 276px;
+  height: 117px;
+}
+div.middle-box-find{
+  position:relative;
+  top:120px;
+  left:40px;
+  width:276px;
+  height:54px;
+}
+
+div.middle-box-account-id{
+  position:relative;
+  width:276px;
+  height:36px;
+  background-color:#ffffff;
+}
+div.middle-box-account-password{
+  position:relative;
+  width:276px;
+  height:36px;
+  background-color:#ffffff;
+}
+input.middle-box-login{
+  position:relative;
+  margin-top: 8px;
+  width:276px;
+  height:36px;
+  background-color:#222b5f;
+  border-radius: 3px;
+  border:0;
+  color : #fff;
+  font-size:14px;
+}
+input.middle-box-login-text{
+  position:relative;
+  width:100%;
+  top: 11px;
+  height:14px;
+  text-align:center;
+  color:#ffffff;
+  font-size:14px;
+  font-family: 'NanumGothic';
+  font-weight: bold;
+}
+div.middle-box-find-id{
+  position:absolute;
+  width:100%;
+  top: 21px;
+  height:12px;
+  text-align:left;
+  color:#fefefe;
+  font-size:12px;
+  font-family: 'NanumGothic';
+  text-decoration: underline;
+}
+div.middle-box-find-password{
+  position:absolute;
+  width:100%;
+  top: 21px;
+  left: 80px;
+  height:12px;
+  text-align:left;
+  color:#fefefe;
+  font-size:12px;
+  font-family: 'NanumGothic';
+  text-decoration: underline;
+}
+input.user-input{
+  position:relative;
+  width:100%;
+  height:100%;
+  border:0px;
+  margin:0px;
+  text-align:center;
+  font-size:14px;
+  color:#d1cdcc;
+}
+
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VetnoteWeb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8" />
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="js/tappable.js"></script>
+  <script type="text/javascript" src="js/page_login.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!--
+    <div class="top">
+      <div class="top-logo">
+      </div>
+    </div>
+    -->
+
+    <div class="middle">
+      <div class="middle-box">
+        <div class="middle-box-icon">
+        </div>
+        <div class="middle-box-account">
+          <form id="login_form" method="POST">
+            <div class="middle-box-account-id">
+              <input class = "user-input" id="id_form" name="id" type="text" placeholder="아이디를 입력해주세요">
+            </div>
+            <div class = "account-line">
+            </div>
+            <div class="middle-box-account-password">
+              <input class = "user-input"  id="password_form" name="password" placeholder="비밀번호를 입력해주세요" type="password">
+            </div>
+            <div class = "account-line">
+            </div>            
+            <div class="middle-box-login">
+              <input class = "middle-box-login" id="submit_login"type="button" value="로그인"> </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</body>
+</html>
+

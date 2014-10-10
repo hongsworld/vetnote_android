@@ -11,10 +11,11 @@
   background-color:#c9c9ca !important;
 }
 div.ui-page{
-  height:100% !important;
+  min-height:100% !important;
 }
+
 html{
-  height:150%;
+  height:auto;
 }
 body{
   margin:0;
@@ -35,7 +36,7 @@ input#datepicker{
   left:0;right:0;bottom:0;top:0;
 }
 input.date{
-  font-size:20px;
+  font-size:10px;
 }
 div.wrap{
   position:absolute;
@@ -48,62 +49,62 @@ div.ui-panel-inner{
   padding:0;
 }
 div.leftpanel{
-  width:280px;
+  width:140px;
   height:100%;
   background-color:#1A1E2D !important;
 }
 div.panel_top{
   position:relative;
   width:100%;
-  height:160px;
+  height:80px;
   border-bottom:solid 1px #fff;
 }
 div.top_txt{
-  height:40px;
+  height:20px;
   width:100%;
   text-align:center;
   color:#ffffff;
-  font-size:40px;
+  font-size:20px;
   font-weight:bold;
 }
 div.major_box{
   position:relative;
   width:100%;
-  height:110px;
+  height:55px;
   border-bottom:solid 1px #fff;
 }
 div.right_box{
   position:relative;
   width:240px;
-  height:110px;
+  height:55px;
   border-bottom:solid 1px #fff;
 }
 div.major_txt{
   position:absolute;
-  margin:auto auto auto 20px;
+  margin:auto auto auto 10px;
   left:0;right:0;bottom:0;top:0;
   color:#fff;
-  font-size:40px;
-  height:40px;
+  font-size:20px;
+  height:20px;
   width:90%;
 }
 div.major_circle{
   position:absolute;
   margin:auto 0 auto auto;
-  left:0;right:30px;bottom:0;top:0;
+  left:0;right:15px;bottom:0;top:0;
   border-radius:100px;
-  width:15px;
-  height:15px;
+  width:7.5px;
+  height:7.5px;
   background-color:#fff;
   opacity:0.1
 }
 div.major_circle-active{
   position:absolute;
   margin:auto 0 auto auto;
-  left:0;right:30px;bottom:0;top:0;
+  left:0;right:15px;bottom:0;top:0;
   border-radius:100px;
-  width:15px;
-  height:15px;
+  width:7.5px;
+  height:7.5px;
   background-color:#fff;
 }
 
@@ -116,15 +117,15 @@ div.rightpanel{
 div.rt{
   width:100% !important;
   float:right;
-  margin:auto 20px auto auto !important;
+  margin:auto 10px auto auto !important;
   text-align:right;
 }
 div.snu_ic{
   position:absolute;
-  margin:auto auto 50px auto;
+  margin:auto auto 25px auto;
   left:0;right:0;top:0;bottom:0;
   width:77.125px;
-  height:80px;
+  height:40px;
   background-image:url('../img/snu_ic.png');
   background-repeat:no-repeat;
   background-position:center center;
@@ -135,42 +136,42 @@ div.head{
   opacity:0.97;
   position:fixed;
   width:100%;
-  height:160px;
+  height:60px;
   background-color:#212A5F;
   z-index:20;
 }
 div.head_lt{
   position:relative;
-  width:127.44px;
+  width:63.7px;
   height:100%;
   float:left;
   background-image:url('../img/menu-lt.png');
   background-repeat:no-repeat;
   background-position:center center;
-  background-size:45px 35.3px;
+  background-size:22.5px 17.6px;
 }
 div.head_lt.tappable-active{
   opacity:0.5;
   position:relative;
-  width:127.44px;
+  width:63.7px;
   height:100%;
   float:left;
   background-image:url('../img/menu-lt.png');
   background-repeat:no-repeat;
   background-position:center center;
-  background-size:45px 35.3px;
+  background-size:22.5px 17.6px;
 }
 div.head_ct{
   position:absolute;
   margin:auto;
   left:0;right:0;top:0;bottom:0;
   width:226px;
-  height:160px;
+  height:40px;
   float:left;
   background-image:url('../img/logo.png');
   background-repeat:no-repeat;
   background-position:center center;
-  background-size: 100%;
+  background-size: 50%;
 }
 div.head_ct.tappable-active{
   opacity:0.4;
@@ -178,12 +179,12 @@ div.head_ct.tappable-active{
   margin:auto;
   left:0;right:0;top:0;bottom:0;
   width:226px;
-  height:160px;
+  height:40px;
   float:left;
   background-image:url('../img/logo.png');
   background-repeat:no-repeat;
   background-position:center center;
-  background-size: 100%;
+  background-size: 50%;
 }
 div.head_rt{
   position:relative;
@@ -203,25 +204,25 @@ div.right_select_box{
   width:100%;
 }
 div.ui-btn{
-  padding:10px !important;
+  padding:5px !important;
   border-top:inherit !important;
   border-left:inherit !important;
   border-right:inherit !important;
   border-radius:inherit !important;
-  border-bottom:3px solid #fff !important;
+  border-bottom:2px solid #fff !important;
   background-color:inherit !important;
   color:#333 !important;
-  font-size:28pt !important;
+  font-size:14pt !important;
 }
 .major_select{
   color:#fff;
 }
 iframe.main_frame{
-  margin-top:160px;
+  margin-top:60px;
   position:absolute;
   width:100%;
-  height:350px;
-  overflow:auto;
+  height:175px;
+  overflow:visible;
   background-color:#fff;
   border:0;
 }
@@ -235,22 +236,22 @@ div.body2{
 div.foot{
   position:fixed;
   width:100%;
-  height:120px;
+  height:60px;
   background-color:#324589;
   bottom:0;
 }
 div.foot-active{
   position:fixed;
   width:100%;
-  height:120px;
+  height:60px;
   background-color:#d1cdcc;
   bottom:0;
 }
 div.foot_qna{
   width:100%;
   text-align:center;
-  height:58px;
-  font-size:58px;
+  height:29px;
+  font-size:29px;
   color:#fff;
   text-shadow:none;
 }
@@ -264,13 +265,13 @@ div.case_number{
   width:49%;
   text-align:center;
   height:100%;
-  font-size:50px;
+  font-size:25px;
   text-shadow:none;
   float:left;
 }
 div.case_number_txt{
   width:100%;
-  height:58px;
+  height:29px;
   color:#fff;
   text-shadow:none;
 }
@@ -281,17 +282,17 @@ div.case_input{
   position:relative;
   width:30%;
   text-align:center;
-  height:69px;
+  height:34.5px;
   text-shadow:none;
   float:left;
 }
 input.case_input{
-  margin-top:24.5px;
+  margin-top:12.25px;
   width:100%;
-  height:69px;
+  height:34.5px;
   border-radius:15px;
   border:solid 1px #fff;
-  font-size:30px;
+  font-size:15px;
   text-align:center;
   color:#fff;
   padding:0;
@@ -310,8 +311,8 @@ div.memo_submit{
   border:1px solid #333;
   width:100%;
   text-align:center;
-  height:70px;
-  font-size:58px;
+  height:35px;
+  font-size:29px;
   color:#fff;
   text-shadow:none;
   float:right;
@@ -327,8 +328,8 @@ div.memo_submit.tappable-active{
   border:1px solid #333;
   width:100%;
   text-align:center;
-  height:70px;
-  font-size:58px;
+  height:35px;
+  font-size:29px;
   color:#fff;
   text-shadow:none;
   float:right;
@@ -336,12 +337,12 @@ div.memo_submit.tappable-active{
 
 
 div.case_submit{
-  margin-top:24.5px;
+  margin-top:12.25px;
   position:relative;
   width:19%;
   text-align:center;
-  height:70px;
-  font-size:58px;
+  height:35px;
+  font-size:14.5px;
   color:#fff;
   text-shadow:none;
   float:right;
@@ -357,7 +358,7 @@ div.case_submit{
 div.date_box{
   position:relative;
   width:100%;
-  height:130px;
+  height:65px;
   background-color:#ffffff;
 }
 
@@ -370,7 +371,7 @@ div.date_box_lt{
   background-image:url('../img/arrow.png');
   background-repeat:no-repeat;
   background-position:center center;
-  background-size:34.75px 50.438px;
+  background-size:17.37px 25.219px;
   
 
 }
@@ -379,15 +380,15 @@ div.date_box_ct{
   margin: auto auto auto auto;
   top:0;bottom:0;left:0;right:0;
   width:450px;
-  height:88px;
+  height:44px;
   border-radius:15px;
   border:solid 1px #6D6E70;
 }
 .date_txt{
   width:450px;
-  height:30px;
+  height:15px;
   text-align:center;
-  font-size:30px;
+  font-size:15px;
 }
 
 div.date_box_ct_of_detail{
@@ -395,14 +396,14 @@ div.date_box_ct_of_detail{
   margin: auto auto auto auto;
   top:0;bottom:0;left:0;right:0;
   width:450px;
-  height:88px;
+  height:44px;
   border-radius:15px;
 }
 div.date_txt_of_detail{
   width:100%;
-  height:50px;
+  height:25px;
   text-align:center;
-  font-size:50px;
+  font-size:25px;
   color:#6d6e70;
 }
 
@@ -415,7 +416,7 @@ div.date_box_rt{
   background-image:url('../img/arrow.png');
   background-repeat:no-repeat;
   background-position:center center;
-  background-size:34.75px 50.438px;
+  background-size:17.37px 25.219px;
   -moz-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
@@ -426,16 +427,16 @@ div.date_box_rt{
 div.notice_box{
   position:relative;
   width:100%;
-  height:80px;
+  height:40px;
   background-color:#324589;
 }
 div.notice_lt{
   position:absolute;
   width:110.9px;
-  height:34.8px;
-  margin:auto auto auto 45px;
+  height:17.4px;
+  margin:auto auto auto 22.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:34.8px;
+  font-size:17.4px;
   color:#fff;
   text-shadow:none;
 
@@ -443,10 +444,10 @@ div.notice_lt{
 div.notice_ct{
   position:absolute;
   width:60%;
-  height:34.8px;
-  margin:auto auto auto 200px;
+  height:17.4px;
+  margin:auto auto auto 100px;
   top:0;bottom:0;left:0;right:0;
-  font-size:34.8px;
+  font-size:17.4px;
   color:#fff;
   text-align:center;
   text-shadow:none;
@@ -455,16 +456,16 @@ div.notice_ct{
 div.notice_rt{
   position:absolute;
   width:110.9px;
-  height:34.8px;
-  margin:auto auto auto 45px;
+  height:8.7px;
+  margin:auto auto auto 22.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:34.8px;
+  font-size:17.4px;
   color:#fff;
 }
 div.detail_bar{
   position:relative;
   width:100%;
-  height:10px;
+  height:5px;
   background-color:#324589;
 }
 
@@ -476,22 +477,22 @@ div.content_box{
   width:100%;
   height:auto;
   background-color:#fff;
-  margin-bottom:120px;
+  margin-bottom:60px;
 }
 div.list_box{
   position:relative;
-  height:141px;
+  height:70.5px;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #6D6E70;
 }
 div.box_of_title{
   position:relative;
   height:auto;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #6D6E70;
 }
 div.list_box_of_detail_after_comment{
@@ -503,16 +504,16 @@ div.comment_box_of_detail{
   position:relative;
   height:auto;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #E2E2E2;
 }
 div.list_box_of_detail{
   position:relative;
   height:auto;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #E2E2E2;
 }
 div.list_box_of_detail.tappable-active{
@@ -520,44 +521,44 @@ div.list_box_of_detail.tappable-active{
   position:relative;
   height:auto;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #E2E2E2;
 }
 div.list_box_of_memo{
   position:relative;
-  height:365px;
+  height:182.5px;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #6D6E70;
 }
 div.list_box_of_syllabus{
   position:relative;
-  min-height:190px;
+  min-height:95px;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #6D6E70;
 }
 div.list_box_of_detail_qna{
   position:relative;
   height:auto;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #6D6E70;
 }
 
 div.list_rt{
   position:absolute;
   width:22px;
-  height:22px;
+  height:11px;
   border-radius:22px;
   border:solid 4px #6D6E70;
-  margin:auto 15px auto auto;
+  margin:auto 7.5px auto auto;
   top:0;bottom:0;left:0;right:0;
-  font-size:34.8px;
+  font-size:17.4px;
   color:#fff;
 }
 div.red{
@@ -575,38 +576,38 @@ div.gray{
 div.list_lt{
   position:absolute;
   width:110.9px;
-  height:53.125px;
-  margin:auto auto auto 45px;
+  height:26.56px;
+  margin:auto auto auto 22.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:53.125px;
+  font-size:26.56px;
   color:#6D6E70;
 }
 div.list_lt_of_detail{
   position:absolute;
   width:110.9px;
   height:auto;
-  margin:0px auto auto 45px;
+  margin:0px auto auto 22.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:33px;
+  font-size:16.5px;
   color:#6D6E70;
 }
 div.list_lt_of_qna1{
   position:absolute;
   width:5%;
-  height:53.125px;
-  margin:20px auto auto 5px;
+  height:26.56px;
+  margin:10px auto auto 2.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:23.125px;
+  font-size:11.56px;
   color:#6D6E70;
   overflow:hidden;
 }
 div.list_lt_of_qna2{
   position:absolute;
   width:14%;
-  height:53.125px;
-  margin:20px auto auto 20px;
+  height:26.56px;
+  margin:20px auto auto 10px;
   top:0;bottom:0;left:0;right:0;
-  font-size:23.125px;
+  font-size:11.56px;
   color:#6D6E70;
   text-align:center;
 }
@@ -615,7 +616,7 @@ div.list_lt_of_syllabus{
   float:left;
   width:3%;
   height:100%;
-  font-size:33px;
+  font-size:16.5px;
   color:#fff;
   text-align:center;
   text-shadow:none;
@@ -627,7 +628,7 @@ div.list_ct_of_syllabus{
   float:left;
   width:15%;
   height:100%;
-  font-size:33px;
+  font-size:16.5px;
   color:#fff;
   text-align:center;
   text-shadow:none;
@@ -639,7 +640,7 @@ div.list_rt_of_syllabus{
   white-space:pre-line;
   width:80%;
   height:100%;
-  font-size:33px;
+  font-size:16.5px;
   color:#6D6E70;
   text-align:left;
   text-shadow:none;
@@ -653,10 +654,10 @@ div.each_day_top{
   border-left:solid 1px #333;
 }
 div.text-top-padding{
-  padding-top:20px;
+  padding-top:10px;
 }
 div.text-padding{
-  padding:20px;
+  padding:10px;
 }
 div.clear{
   clear:both
@@ -664,10 +665,10 @@ div.clear{
 div.list_ct{
   position:absolute;
   width:70%;
-  height:53.152px;
-  margin:auto auto auto 121px;
+  height:26.56px;
+  margin:auto auto auto 60.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:43.152px;
+  font-size:21.57px;
   color:#6D6E70;
   text-align:left;
   text-shadow:none;
@@ -678,11 +679,11 @@ div.list_ct{
 div.list_ct_of_detail{
   position:relative;
   width:80%;
-  min-height:53.152px;
+  min-height:26.56px;
   height:auto;
-  margin:52px auto 43px 121px;
+  margin:26px auto 21.5px 60.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:36px;
+  font-size:18px;
   color:#6D6E70;
   text-align:left;
   text-shadow:none;
@@ -690,11 +691,11 @@ div.list_ct_of_detail{
 div.quest_ct_of_detail{
   position:relative;
   width:100%;
-  min-height:53.152px;
+  min-height:26.56px;
   height:auto;
-  margin:52px auto 43px auto;
+  margin:26px auto 21.5px auto;
   top:0;bottom:0;left:0;right:0;
-  font-size:36px;
+  font-size:18px;
   font-weight:500 !important;
   color:#6D6E70;
   text-align:center;
@@ -704,10 +705,10 @@ div.list_ct_of_detail_qna{
   white-space: pre-line;
   position:relative;
   width:80%;
-  min-height:53.152px;
-  margin:20px auto auto 121px;
+  min-height:26.56px;
+  margin:10px auto auto 60.5px;
   top:0;bottom:0;left:0;right:0;
-  font-size:33px;
+  font-size:16.5px;
   color:#6D6E70;
   text-align:left;
   text-shadow:none;
@@ -716,12 +717,12 @@ div.list_ct_of_qna{
   position:relative;
   white-space:pre-line;
   width:80%;
-  min-height:172px;
+  min-height:86px;
   height:auto;
 
-  margin:20px auto auto 121px;
-  top:10px;bottom:0;left:0;right:0;
-  font-size:33px;
+  margin:10px auto auto 60.5px;
+  top:5px;bottom:0;left:0;right:0;
+  font-size:16.5px;
   color:#6D6E70;
   text-align:left;
   text-shadow:none;
@@ -730,19 +731,19 @@ div.list_ct_of_qna{
 
 div.camera_box{
   position:relative;
-  height:390px;
+  height:195px;
   width:calc(100% - 80px);
-  margin-left:40px;
-  margin-right:40px;
+  margin-left:20px;
+  margin-right:20px;
   border-bottom:solid 1px #6D6E70;
 }
 
 .camera_qna{
   position:absolute;
-  margin: auto 10px auto auto;
+  margin: auto 5px auto auto;
   top:0;bottom:0;left:0;right:0;
-  width:112.32px !important;
-  height:112.32px;
+  width:56.16px !important;
+  height:56.16px;
   background-color:#fff !important;
   border:0 !important;
   background-image:url('../img/camera.png');
@@ -752,10 +753,10 @@ div.camera_box{
 }
 .camera_ic{
   position:absolute;
-  margin: 39px auto auto auto;
+  margin: 19.5px auto auto auto;
   top:0;bottom:0;left:0;right:0;
-  width:112.32px !important;
-  height:112.32px;
+  width:56.16px !important;
+  height:56.16px;
   background-color:#fff !important;
   border:0 !important;
   background-image:url('../img/camera.png');
@@ -778,8 +779,8 @@ input.file{
 textarea.qna{
   position:relative;
   width:500px;
-  height:387px !important;
-  font-size:30px;
+  height:193.5px !important;
+  font-size:15px;
   border:0;
   -moz-user-select: auto !important;
   -khtml-user-select: auto !important;
@@ -1034,11 +1035,10 @@ div.modal_bottom{
   border-bottom-left-radius:50px;
   border-bottom-right-radius:50px;
 }
-*/
 
 
   /* daily practice */
-
+/*
 div.daily_ct_title{
   position:relative;
   width:100%;
@@ -1046,7 +1046,7 @@ div.daily_ct_title{
   height:auto;
   margin:52px auto 43px auto;
   top:0;bottom:0;left:0;right:0;
-  font-size:50px;
+  font-size:25px;
   font-weight:300 !important;
   color:#6D6E70;
   text-align:center;
@@ -1056,7 +1056,7 @@ div.daily_top_title{
   width:100%;
   height:50px;
   text-align:center;
-  font-size:50px;
+  font-size:25px;
   color:#6d6e70;
 }
 div.daily_quest_title{
@@ -1066,7 +1066,7 @@ div.daily_quest_title{
   height:1em;
   margin:52px 56px 43px 121px;
   top:0;bottom:0;left:0;right:0;
-  font-size:36px;
+  font-size:18px;
   color:#6D6E70;
   text-align:left;
   text-shadow:none;
@@ -1080,7 +1080,7 @@ div.daily_quest_case{
   height:auto;
   margin:52px auto 43px 221px;
   top:0;bottom:0;left:0;right:0;
-  font-size:36px;
+  font-size:18px;
   color:#6D6E70;
   text-align:left;
   text-shadow:none;
@@ -1122,7 +1122,7 @@ div.daily_list_rt{
   border:solid 4px #6D6E70;
   margin:auto 15px 56px auto;
   top:0;bottom:0;left:0;right:0;
-  font-size:34.8px;
+  font-size:17.4px;
   color:#fff;
 }
 .daily_textarea{
@@ -1132,7 +1132,7 @@ div.daily_list_rt{
   height:auto !important;
   border-radius:50px;
   margin:40px auto 20px auto;
-  font-size:36px;
+  font-size:18px;
   padding:40px !important;
   white-space:pre-line;
   -moz-user-select: auto !important;
@@ -1140,3 +1140,4 @@ div.daily_list_rt{
   -webkit-user-select: auto !important;
   user-select: auto !important;
 }
+*/

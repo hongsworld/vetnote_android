@@ -2,21 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/jquery.mobile-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/index_style.js"></script>
     <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" />
-    <script src="js/monaca.js"></script>
-    <script src="js/monaca.viewport.js"></script>
     <title>SnuVet</title>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="js/tappable.js"></script>
 </head>
-<script>
-  monaca.viewport({width: "device-width"});
-</script>
 <body onload="onLoad()" >
 <div class = "wrap">
 
@@ -57,6 +53,13 @@
         <div class = "major_circle-active">
         </div>
       </div>
+      <div class = "major_box" id="report_btn">
+        <div class = "major_txt">
+          보고서 작성
+        </div>
+        <div class = "major_circle-active">
+        </div>
+      </div>
       <div class = "major_box" id="menu">
         <div class = "major_txt">
           이주의 식단
@@ -64,13 +67,14 @@
         <div class = "major_circle-active">
         </div>
       </div>
-      <div class = "major_box">
+      <div class = "major_box" id="logout">
         <div class = "major_txt">
-          설정
+          로그아웃
         </div>
-        <div class = "major_circle">
+        <div class = "major_circle-active">
         </div>
       </div>
+      <!--
       <div class = "major_box">
         <div class = "major_txt">
           도움말
@@ -78,6 +82,7 @@
         <div class = "major_circle">
         </div>
       </div>
+      -->
     </div>
 
     <div class ="head">
@@ -87,10 +92,11 @@
       </div>
       <div class = "head_rt" id="menu_rt_index">
         <div class = "right_select_box absolute_center">
+          <!--
           <select disabled id="major_select" class="major_select">
-            <option value="1">내과</option>
+            <option value="1" id="major_selected">내과</option>
           </select>
-          
+          -->
         </div>
       </div>
     </div>
