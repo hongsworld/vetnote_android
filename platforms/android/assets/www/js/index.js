@@ -1,8 +1,11 @@
-  
-
 var host = "http://asanapp.com:4321"
 var selectedMajor = 11 
 var user_token  = window.localStorage.getItem("user_token")
+
+
+
+
+
 if (user_token == null) {
   window.location.replace("./login.html")
 }
@@ -18,17 +21,20 @@ $(document).ready( function() {
       if (data.error_code ==1) {
         window.localStorage.removeItem("selectedMajorId")
         window.localStorage.setItem("selectedMajorId", data.selected_major_id)
-        
+        selected_major_text = ["내과", "마취과", "산과", "안과", "야생동물과", "영상의학과", "일반외과", "임상병리과","임상기초", "정형외과", "피부과"][parseInt(data.selected_major_id) - 1].toString();
+        $("span#major_select").text(selected_major_text)
       } else {
         window.localStorage.removeItem("selectedMajorId")
       }
 
     },
-    error: function(data) {
-      alert("인터넷 연결이 불안정합니다");
-      exitBoolean  = confirm("어플리케이션을 종료하시겠습니까?")
-      if (exitBoolean == true) {
-        navigator.app.exitApp();
+    error : function(XMLHttpRequest, textStatus) {
+      if(textStatus == 'timeout'){
+        alert("인터넷 연결이 불안정합니다");
+        exitBoolean  = confirm("어플리케이션을 종료하시겠습니까?")
+        if (exitBoolean == true) {
+          navigator.app.exitApp();
+        }
       }
     }
   });
@@ -39,7 +45,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 
-document.addEventListener("Backbutton", onBackKeyDown, false);
+  pushNotification = window.plugins.pushNotification;
+  document.addEventListener("Backbutton", onBackKeyDown, false);
 
 }
 

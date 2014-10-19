@@ -1,6 +1,74 @@
 var host = "http://asanapp.com:4321"
 var user_token  = window.localStorage.getItem("user_token")
-//임시 토큰 
+
+
+
+    var pushNotification;
+
+    function onNotificationGCM(e) {
+      var temp_token =window.localStorage.getItem("temp_token");
+      switch( e.event ){
+        case 'registered':
+        if ( e.regid.length > 0 ) {
+          $.ajax({
+            url: host + "/user/login_gcm_regi",
+            type: "POST",
+            timeout: 1000,
+            data: {
+              gcm_token: e.regid,
+              token: temp_token
+            },
+            success: function(data) {
+              if (data.error_code ==0) {
+                //여기가 regID를 받는 코드
+                window.localStorage.setItem("token", temp_token);
+                window.location.replace("selectPet.html#modal-text");
+              }
+            },
+            error : function(XMLHttpRequest, textStatus) {
+              if(textStatus == 'timeout'){
+                alert("서버 연결이 원활하지 않습니다")
+              }
+            }
+          });
+        }
+        break;
+
+        case 'message':
+        if (e.foreground) {
+          alert('새로운 알림사항이 있습니다');
+        } else { // background 일 때·
+          // otherwise we were launched because the user touched a notification in the notification tray.
+          if (e.coldstart){
+            alert('새로운 알림사항이 있습니다');
+          } else {
+            alert('새로운 알림사항이 있습니다');
+          }
+        }
+        break;
+
+        case 'error':
+        alert('MSG:' + e.msg  );
+        break;
+
+        default:
+        alert('EVENT -> Unknown, an event was received');
+        break;
+      }
+    }
+
+
+    function successHandler (result) {
+      console.log("result : " + result);
+    }
+    function errorHandler (error) {
+      alert("error : " + error);
+    }
+
+
+
+
+
 
   function go_report() {
     $.ajax({
@@ -36,13 +104,38 @@ var user_token  = window.localStorage.getItem("user_token")
 
             "")
         }
-        comment_text = ""
+        $("#report_diarylist").html("")
         for (i = 0; i < data.comment_time.length; i++) {
-          comment_text += "시일 : " + data.comment_time[i] + "\n" +
-                    "성찰일지 : " + data.comment1[i] + "\n" + 
-                    "실습 외 활동 : " + data.comment2[i] +"\n\n"
+          $("#report_diarylist").append("" + 
+            "<div class = 'each_report_diary_box' id='each_report_diary_box' value=" + data.comment_time[i] + ">" +
+              "<div class = 'each_report_diary_colum'>" +
+                "<div class= 'each_report_diary_lt'>" +
+                  "<div class = 'each_report_diary_text'>일시</div>" +
+                "</div>"  +
+                "<div class= 'each_report_diary_rt'>" +
+                  "<div class = 'each_report_diary_text'>" + data.comment_time[i] + "</div>" +
+                "</div>" +
+              "</div>" +
+              "<div class = 'each_report_diary_colum'>" + 
+                "<div class= 'each_report_diary_lt'>" +
+                  "<div class = 'each_report_diary_text'>성찰일지</div>"  +
+                "</div>" +
+                "<div class= 'each_report_diary_rt'>" +
+                  "<div class = 'each_report_diary_text'>" + data.comment1[i] + "</div>" +
+                "</div>" +
+              "</div>" +
+              "<div class = 'each_report_diary_colum'>" +
+                "<div class= 'each_report_diary_lt'>" +
+                  "<div class = 'each_report_diary_text'>실습 외 활동" +
+                  "</div>" +
+                "</div>" +
+                "<div class= 'each_report_diary_rt'>" +
+                  "<div class = 'each_report_diary_text'>" + data.comment2[i] + "</div>" +
+                "</div>" + 
+              "</div>" +
+            "</div>" +
+          "")
         }
-        $("#report_comment").val(comment_text)
         $("#report_range_date").text(data.start_date + " - " + data.last_date)
         location.replace("pages.html#report")
       }
@@ -332,6 +425,14 @@ var user_token  = window.localStorage.getItem("user_token")
   function questSmall(target) { 
     window.localStorage.setItem("layer",5)
     window.localStorage.setItem("depth",2)
+        $("#hidden_case_number").val("")
+        $("#image_logbook").val("")
+        $("#quest_id").val("")
+        $("#hidden_log_memo").val("")
+        $("#textarea_log_memo").val("")
+        $("#input_case_number").val("")
+        $("#logbook_write_camera").css("background-image", "url('img/camera_ic2.png')");
+
         $.ajax({
           url: host +  "/quest/small" ,
           type: "POST",
@@ -390,7 +491,8 @@ var user_token  = window.localStorage.getItem("user_token")
       url: host +  "/quest/large" ,
       type: "POST",
       data: {
-        selectedMajorId: selectedMajorId
+        selectedMajorId: selectedMajorId,
+        user_token: user_token
       },
       success: function(data) {
         if (data.error_code ==1) {
@@ -415,7 +517,7 @@ var user_token  = window.localStorage.getItem("user_token")
                     "<div class = 'middle'>" +
                       "<div class = 'inner'>" +
                         "<div class = 'each_log_list_rt_txt'>" +
-                          data.title[i] +
+                          data.title[i] + " " + "(" + data.count_array[i]+ ")" +   
                         "</div>" +
                       "</div>" +
                     "</div>" +
@@ -1128,11 +1230,9 @@ var user_token  = window.localStorage.getItem("user_token")
   }
 
 
-
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-
 
   pictureSource=navigator.camera.PictureSourceType;
   destinationType=navigator.camera.DestinationType;
@@ -1341,6 +1441,7 @@ function onDeviceReady() {
               if (data.picture_url != null) {
                 $("#detail_picture_box-recorded_log").removeClass("detail_picture_box-none").addClass("detail_picture_box");
                 $("#detail_picture_box-recorded_log").css("background-image","url('" + host  +"/img/" + data.picture_url + "')")
+                $("#detail_picture_box-recorded_log").height($("#detail_picture_box-recorded_log").width())
               }else{
                 $("#detail_picture_box-recorded_log").css("display","none")  
               }
@@ -1568,6 +1669,15 @@ function onDeviceReady() {
         });
       }
     });
+
+
+
+    tappable("#each_report_diary_box", {
+      onTap: function(e, target){
+        go_comment($(target).attr("value"))
+      }
+    });
+
 
 
 

@@ -1,0 +1,202 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android)
+SHA1-Digest-Manifest: B0rDMo9XawWLZsGm3J20Ubbzn3c=
+
+Name: assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOp
+ tions.js
+SHA1-Digest: GC8Rb7mW+L90XJr10TQdVRbckLU=
+
+Name: res/xml/config.xml
+SHA1-Digest: nF5jFuS1sMJNswFDURQQvGsxJUQ=
+
+Name: assets/www/js/modal.js
+SHA1-Digest: Irfen36OjEs7CBtg6uWZExfag5M=
+
+Name: assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverHa
+ ndle.js
+SHA1-Digest: DaiTOkmuEYcHWmuPgAkXCQGzuF8=
+
+Name: assets/www/pages.html
+SHA1-Digest: PcSlStNP+/gzE9s2fM5ICDJpu/0=
+
+Name: assets/www/img/cf22d68846.jpg
+SHA1-Digest: WNTiDVMZFkhZt5NI1obSnhXIuig=
+
+Name: res/drawable-ldpi/icon.png
+SHA1-Digest: X0UITVPd1iaUN8yJRnbhLx1bFk4=
+
+Name: assets/www/css/jquery.mobile-1.4.2.min.css
+SHA1-Digest: PSWaX3mAqSqqIpokQHEM8I9f6U0=
+
+Name: assets/www/js/index.js.preserve
+SHA1-Digest: RAYT1s8MtVeZ5LUP7wHsxXI1qh0=
+
+Name: res/drawable-mdpi/icon.png
+SHA1-Digest: UYt7XUzdgyIIFscGKQ94kMULUwA=
+
+Name: assets/www/page_login.html
+SHA1-Digest: TRNIa3EbVg/Ym4pSKf9SoTgJ5Mc=
+
+Name: assets/www/js/page_login.js
+SHA1-Digest: l8/ux1pSPBL9QUNLlspFvo3UqdU=
+
+Name: assets/www/img/login_ic.png
+SHA1-Digest: nFBDf0mEGxkWgacuePHTrSB+Ghc=
+
+Name: assets/www/plugins/org.apache.cordova.camera/www/Camera.js
+SHA1-Digest: Pe9OR++bxKDWd//+Se7rVrf8m5Q=
+
+Name: assets/www/css/icons_mobiscroll.ttf
+SHA1-Digest: ayn4/Mm6j3r60/+DrRh8ZAupJQk=
+
+Name: assets/www/img/camera_ic2.png
+SHA1-Digest: FOkdjmGnVJZp+BMLP8gNFC9umYA=
+
+Name: assets/www/js/pages_save.js
+SHA1-Digest: +SVLLfQ8owYq+JZYm6dMefHzWaw=
+
+Name: assets/www/js/monaca.viewport.js
+SHA1-Digest: N6A3VG4y2LP3QVntTDeIISgy1s4=
+
+Name: assets/www/css/index.css.preserve
+SHA1-Digest: tEMAgfRoNIsN40g3omGU6reuq+U=
+
+Name: assets/www/img/submit.png
+SHA1-Digest: 1CKAd9iUxXk1j2vRXxSoKRi9Jvs=
+
+Name: assets/www/css/icons_mobiscroll.woff
+SHA1-Digest: U8qz4N0kb3BMsobhuFuriQljzzw=
+
+Name: assets/www/img/camera_ic.png
+SHA1-Digest: Qwqd+kl323tUtKuV0tE/kK0syJ8=
+
+Name: assets/www/img/lunch.png
+SHA1-Digest: VxgwdH2ykflQOj9z+wtTPRFVyDk=
+
+Name: assets/www/css/icons_mobiscroll.svg
+SHA1-Digest: Tpd+EHqIRm5WNysGIwI7ZlAJxyY=
+
+Name: assets/www/js/index.js
+SHA1-Digest: cXvc8n5cq6Ct/DTASnYlZIgfjF8=
+
+Name: assets/www/img/logo_ic.png
+SHA1-Digest: cDV+H/pDjM11xD2evw/8OevmgEY=
+
+Name: assets/www/cordova.js
+SHA1-Digest: MaxewiqX2YL1fkxi0fv/52TVulE=
+
+Name: assets/www/img/dinner.png
+SHA1-Digest: spfFw/aFX5R4vunYTLlTyn09iSg=
+
+Name: assets/www/login.html
+SHA1-Digest: zalHLJvjDebqELLRe4LY3c+wXng=
+
+Name: assets/www/index.html
+SHA1-Digest: MfoJb/bKI5vmsThm9HDy9ypiRZs=
+
+Name: assets/www/plugins/org.apache.cordova.camera/www/CameraConstants
+ .js
+SHA1-Digest: ROkdY2ZIoMOrXJKdRA/ir7fo7NQ=
+
+Name: assets/www/css/mobiscroll.custom-2.10.1.min.css
+SHA1-Digest: MWvuioh+1Za6GYHXOmDXbzrdsrg=
+
+Name: assets/www/img/arrow2.png
+SHA1-Digest: jjgD0pfLmwK+4ANr5iRMYtgbYVM=
+
+Name: assets/www/img/menu.png
+SHA1-Digest: CzxiIPm3TThCMcMzTn7itfQdyIA=
+
+Name: assets/www/img/calendar.png
+SHA1-Digest: 0AFWg6DJw4fndN+s5Yl4WClPwP8=
+
+Name: assets/www/img/menu-rt.png
+SHA1-Digest: L+SPkbk0Yh9iEq0WbZ9Dd/vDHXE=
+
+Name: assets/www/img/f32d93a04c.jpg
+SHA1-Digest: d87ysqDBzctY4sn688VLriL1r80=
+
+Name: assets/www/css/index.css
+SHA1-Digest: YKd++VQ+063/pLNIYlv3GwhXPpg=
+
+Name: resources.arsc
+SHA1-Digest: XArKq0nS8/eUXlYZ77M71u6/Y30=
+
+Name: AndroidManifest.xml
+SHA1-Digest: G+BbDno4zG5pANV6K1ct/tcd4LU=
+
+Name: assets/www/img/logo.png
+SHA1-Digest: P+VGdRlcYKfvfYiS2K5ROMsAk6E=
+
+Name: assets/www/js/jquery-1.9.1.min.js
+SHA1-Digest: xBjrCCPa2teWMgtlvCOc2ZRrOfY=
+
+Name: assets/www/img/04ec33d655.jpg
+SHA1-Digest: AubjAEsMoEJf5d5Hh+bqyu6LZ30=
+
+Name: assets/www/js/pages.js
+SHA1-Digest: DNEi20n3Z3ktdz+q5nlV24lwGJM=
+
+Name: assets/www/img/logo 2.png
+SHA1-Digest: 7OCS3t7a9zI91XY2aWF0bDUy74I=
+
+Name: assets/www/img/snu_ic.png
+SHA1-Digest: SmzpYz69BzR/08IgIJ+I/DCmuqM=
+
+Name: res/drawable-xhdpi/icon.png
+SHA1-Digest: At7A4plI59Y8A7D50b87WZ1ttDs=
+
+Name: assets/www/css/modal.css
+SHA1-Digest: BlHbKxPluuuRz5BihbV9+Cn7oKc=
+
+Name: assets/www/js/index_style.js
+SHA1-Digest: JhS9lxOs8IqHH8w9qcLTZgisRuM=
+
+Name: assets/www/css/icons_mobiscroll.eot
+SHA1-Digest: 7vMSFlfrKf2Aq/p6NMLGwjsSwDQ=
+
+Name: assets/www/img/logo_txt_ic.png
+SHA1-Digest: ORkh9SOC9f+zoAfENvYp796FzZw=
+
+Name: assets/www/img/arrow.png
+SHA1-Digest: Caahvq25g15q4UZEy/uAt3sq09Q=
+
+Name: assets/www/cordova_plugins.js
+SHA1-Digest: bNBQ3YdF78VsthvhkTcr/zPgWME=
+
+Name: classes.dex
+SHA1-Digest: ga6HVJTX4zDZ5MbvX+Z58eX9Tgk=
+
+Name: assets/www/js/mobiscroll.custom-2.10.1.min.js
+SHA1-Digest: 53ANTZuYogA6RMDcdlC3KWV4VCY=
+
+Name: assets/www/js/style.js
+SHA1-Digest: j6GN4qplPPWlVIaUb72s/7jHuB8=
+
+Name: assets/www/js/tappable.js
+SHA1-Digest: Z9nQHEc4XmR0Tw48lVg3tUBGAeA=
+
+Name: assets/www/css/pages.css
+SHA1-Digest: YXko6w0qphnMo4MDlAEulRX1Zqc=
+
+Name: assets/www/js/jquery.mobile-1.4.2.min.js
+SHA1-Digest: x0SElIhhRiiKA8zNyP1QavfuIDc=
+
+Name: res/drawable/icon.png
+SHA1-Digest: VxH7UYldyjwtx29/nGD2cjJfClQ=
+
+Name: assets/www/img/snu_logo.png
+SHA1-Digest: qQXRa6W7c3GucdY5aIyTLXoWG14=
+
+Name: assets/www/img/menu-lt.png
+SHA1-Digest: eym/H0tBHrsqtzFj2Q8cL86y6Lc=
+
+Name: assets/www/js/monaca.js
+SHA1-Digest: F5X3NJ/h28Y5UW6mI0mAbwvhcJ8=
+
+Name: assets/www/img/camera.png
+SHA1-Digest: Al/l00bVQQTN2z7NHiQPrNsBzs8=
+
+Name: res/drawable-hdpi/icon.png
+SHA1-Digest: FWbJpCR2ty1YqbnRMUl3MBZuM70=
+
