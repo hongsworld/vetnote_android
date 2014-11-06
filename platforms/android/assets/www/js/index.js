@@ -18,7 +18,11 @@ $(document).ready( function() {
       user_token: user_token
     },
     success: function(data) {
-      if (data.error_code ==1) {
+      if (data.error_code == "-1"){
+       window.localStorage.removeItem("user_token")
+       parent.window.location.replace("./login.html")
+        
+      } else if (data.error_code ==1) {
         window.localStorage.removeItem("selectedMajorId")
         window.localStorage.setItem("selectedMajorId", data.selected_major_id)
         selected_major_text = ["내과", "마취과", "산과", "안과", "야생동물과", "영상의학과", "일반외과", "임상병리과","임상기초", "정형외과", "피부과"][parseInt(data.selected_major_id) - 1].toString();

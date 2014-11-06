@@ -130,7 +130,7 @@
             <div class = "outer">
               <div class = "middle">
                 <div class = " inner">
-                  <div class="calender_box_rt_txt">
+                  <div class="calender_box_rt_txt" id = "logbook_day_btn">
             + 오늘의 실습 수행하기 
                   </div>
                 </div>
@@ -394,14 +394,14 @@
 
 
 
-        <form action="/api/report_submit" method="POST" id = "valuation">
+        <form action="/api/report_submit" method="POST" id = "report_form">
 
           <div class = "comment-label">
             최종 보고
           </div>
 
           <div class = "comment_box">
-            <textarea id="report_comment" style="padding:20px;" placeholder="최종 보고 내용을 입력해주세요" ></textarea>
+            <textarea name="report_text" id="report_text" style="padding:20px;" placeholder="최종 보고 내용을 입력해주세요" ></textarea>
           </div>
 
           <div class = "comment-label">
@@ -884,7 +884,7 @@
 
         </form> 
         <div class = "calender_box">
-          <input type="button" value="제출" id="evaluation_submit" style="width:100%; line-height:120px !important; color:#fff;" >                                                                    
+          <input type="button" value="제출" id="report_submit" style="width:100%; line-height:120px !important; color:#fff;" >                                                                    
 <!--
           <div class = "calender_box2_lt" id="cancel_comment">
             
@@ -1173,37 +1173,10 @@
               theme: "ios7",
               mode: "scroller",
               display: "bottom",
-              lang: "english"               
+              lang: "english"
               })
             );
             });
-            var today = new Date()
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1;
-            var yyyy = today.getFullYear();
-            if(dd<10) {
-                dd='0'+dd
-            } 
-
-            if(mm<10) {
-                mm='0'+mm
-            } 
-            var date = yyyy + ". " + mm + ". " + dd;
-            var today = new Date()
-            var weekday = new Array(7);
-            weekday[0]=  "Sunday";
-            weekday[1] = "Monday";
-            weekday[2] = "Tuesday";
-            weekday[3] = "Wednesday";
-            weekday[4] = "Thursday";
-            weekday[5] = "Friday";
-            weekday[6] = "Saturday";
-
-            var day = weekday[today.getDay()];
-
-
-            $("#comment_calendar").val(date);
-            $("#comment_calendar").text(date)
           });
     </script>   
     <div class = "page-wrap">
@@ -1249,11 +1222,7 @@
           날짜
         </div>
         <div class = "calender_box" style="margin-top:10px;">
-            
-                <div class="calender_box_rt_txt" style="text-align:left; color:#9f9fa0; padding:20px;" id="comment_calendar">
-          2014.09.15.
-                </div>
-
+            <input class = "calender_box_rt_txt"  style="text-align:left; color:#9f9fa0; padding:20px;" id = "comment_calendar">
         </div> <!-- page calender box end -->
 
         <div class = "comment-label">
@@ -2054,7 +2023,7 @@ hi
               lang: "english"
               })
             );
-            });
+            });/*
           var today = new Date()
           var dd = today.getDate();
           var mm = today.getMonth() + 1;
@@ -2078,7 +2047,7 @@ hi
           weekday[6] = "Saturday";
 
           var day = weekday[today.getDay()];
-
+          /*
 
           //$("#datepicker_date_comment").val(date);
           // $("#datepicker_day_comment").text(day)

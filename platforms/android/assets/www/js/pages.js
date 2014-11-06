@@ -1,6 +1,18 @@
 var host = "http://asanapp.com:4321"
 var user_token  = window.localStorage.getItem("user_token")
 
+var today = new Date()
+var dd = today.getDate();
+var mm = today.getMonth() + 1;
+var yyyy = today.getFullYear();
+if(dd<10) {
+    dd='0'+dd
+} 
+
+if(mm<10) {
+    mm='0'+mm
+} 
+today_date = yyyy + ". " + mm + ". " + dd;
 
 
     var pushNotification;
@@ -36,13 +48,13 @@ var user_token  = window.localStorage.getItem("user_token")
 
         case 'message':
         if (e.foreground) {
-          alert('새로운 알림사항이 있습니다');
+          alert(e.payload.message);
         } else { // background 일 때·
           // otherwise we were launched because the user touched a notification in the notification tray.
           if (e.coldstart){
-            alert('새로운 알림사항이 있습니다');
+            alert(e.payload.message);
           } else {
-            alert('새로운 알림사항이 있습니다');
+            alert(e.payload.message);
           }
         }
         break;
@@ -78,6 +90,7 @@ var user_token  = window.localStorage.getItem("user_token")
         user_token : user_token
       },
       success: function(data) {
+        $("#report_text").val(data.report_text)
         $("#report_loglist").html("")
         for (i = 0; i < data.title.length; i++) {
           $("#report_loglist").append(" " +
@@ -252,7 +265,7 @@ var user_token  = window.localStorage.getItem("user_token")
       url: host +  "/api/notice_list" ,
       type: "POST",
       data: {
-        selectedMajorId: window.localStorage.getItem("selectedMajorId")
+        token: user_token
       },
       success: function(data) {
         if (data.error_code ==1) {
@@ -559,16 +572,32 @@ var user_token  = window.localStorage.getItem("user_token")
     function go_logbook(date) {
     window.localStorage.setItem("layer",5)
     window.localStorage.setItem("depth",0)
+    if (date != null) {
+      window.localStorage.removeItem("logbook_date")
+      window.localStorage.setItem("logbook_date",date)
+    }else {
+      window.localStorage.removeItem("logbook_date")
+      window.localStorage.setItem("logbook_date",today_date)
+    }
+
       $.ajax({
         url: host +  "/api/daily_logbook" ,
         type: "POST",
         data: {
           selectedMajorId: window.localStorage.getItem("selectedMajorId"),
-          date: date,
+          date: window.localStorage.getItem("logbook_date"),
           token: user_token
         },
         success: function(data) {
           if (data.error_code ==1) {
+            if (window.localStorage.getItem("logbook_date") != today_date) {
+              $("#logbook_day_btn").text( date.substr(0,2) + "월" +  date.substr(3,2) + "일" + " 의 실습 기록하기")
+            } else {
+              $("#logbook_day_btn").text("+ 오늘의 실습 수행하기")
+              $("#datepicker_date_logbook").val(today_date)
+            }
+
+
             if (data.log_title.length == 0 ) {
               if (date == null) {
                 $("#logbook_list").html(" " + 
@@ -767,6 +796,13 @@ var user_token  = window.localStorage.getItem("user_token")
     function go_comment(date) {    
     window.localStorage.setItem("layer",6)
     window.localStorage.setItem("depth",0)
+    if (date != null) {
+      window.localStorage.removeItem("comment_date")
+      window.localStorage.setItem("comment_date",date)
+    }else {
+      window.localStorage.removeItem("comment_date")
+      window.localStorage.setItem("comment_date","today")
+    }
       $.ajax({
         url: host +  "/api/daily_comment" ,
         type: "POST",
@@ -781,8 +817,8 @@ var user_token  = window.localStorage.getItem("user_token")
 
             if (data.wait == true) {
             } else {
-              $("#textarea_student_comment1").text(data.student_comment1)
-              $("#textarea_student_comment2").text(data.student_comment2)
+              $("#textarea_student_comment1").val(data.student_comment1)
+              $("#textarea_student_comment2").val(data.student_comment2)
               $("#comment_loglist").html("")
               //로그북 없을때
               if (data.comment_logtitle==""){
@@ -984,11 +1020,43 @@ var user_token  = window.localStorage.getItem("user_token")
         type: "POST",
         data: {
           selectedMajorId: window.localStorage.getItem("selectedMajorId"),
+          token: user_token
         },
         success: function(data) {
           if (data.error_code ==1) {
             if (data.writer.length == 0 ) {
-
+              $("#qna_list_box").html("")
+                  $("#qna_list_box").append(" " + 
+                    "<div class = 'new_logbook'>" +
+                      "<div class = 'new_camera_ic'>" +
+                      "</div>" +
+                      "<div class = 'calc_new_text_box'>" + 
+                        "<div class= 'new_text_box' id='each_qna_list' value=''>" +
+                          "<div class ='new_text_box_top'>" +
+                            "<div class = 'new_text_box_top_txt'>" +
+                               "등록된 질문이 없습니다" +
+                            "</div>" +
+                            "<div class = 'new_text_box_top_content'> " +
+                            "</div>" +
+                            "<div class = 'new_text_box_top_time'>" +
+                            "</div>" +
+                          "</div>" +
+                          "<div class ='new_text_box_bottom'>" +
+                            "<div class = 'outer'>" +
+                              "<div class = 'middle'>" +
+                                "<div class = 'inner'>" +
+                                  "<div class = 'new_text_box_bottom_txt '>" +
+                                    "" +
+                                  "</div>" +
+                                "</div>" +
+                              "</div>" +
+                            "</div>" +
+                          "</div>" +
+                        "</div>" +
+                      "</div>" +
+                    "</div>" +
+                  " ");
+              
             } else {
               $("#qna_list_box").html("")
               for (i = 0; i < data.writer.length; i++) {
@@ -1373,11 +1441,11 @@ function onDeviceReady() {
             selectedMajorId: window.localStorage.getItem("selectedMajorId"),
             student_comment1: $("#textarea_student_comment1").val(),
             student_comment2: $("#textarea_student_comment2").val(),
-            token: user_token 
+            token: user_token,
+            comment_date: window.localStorage.getItem("comment_date")
           },
           success: function(data) {
             if (data.error_code ==1) {
-              go_comment()
               alert("실습일지가 성공적으로 저장되었습니다")
             } else {
               alert(data.error_msg);
@@ -1499,6 +1567,7 @@ function onDeviceReady() {
       console.log($("#case_number").val());
       var formData = new FormData($('#formData_logbook')[0])
       formData.append("token", user_token)
+      formData.append("logbook_date", window.localStorage.getItem("logbook_date"))
 
       console.log(formData.serialize)
       $.ajax(
@@ -1529,35 +1598,43 @@ function onDeviceReady() {
     });
 
 
-  // move logbook
-    $("#datepicker_date_logbook").change(function () {
-        console.log($("#datepicker_date_logbook").val())
-        selectedMajorId = window.localStorage.getItem("selectedMajorId");
-        var today = new Date()
-        var weekday = new Array(7);
-        weekday[0]=  "Sunday";
-        weekday[1] = "Monday";
-        weekday[2] = "Tuesday";
-        weekday[3] = "Wednesday";
-        weekday[4] = "Thursday";
-        weekday[5] = "Friday";
-        weekday[6] = "Saturday";
-        //function parseDate(input) {
-        //  parts = input.split('/');
-        //  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
-        //  return new Date(parts[2], parts[0]-1, parts[1]); // Note: months are 0-based
-        //}
-        //var day = weekday[parseDate($("#datepicker_date_logbook")).getDay()];
-        //$("#datepicker_day_logbook").text(day); 
-         go_logbook($("#datepicker_date_logbook").val());
-      })
-      .change();
-
-
 
   // move comment
-    $("#datepicker_date_comment").change(function () {
-        var selectedDate = $("#datepicker_date_comment").val()
+    var today = new Date()
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if(dd<10) {
+        dd='0'+dd
+    } 
+
+    if(mm<10) {
+        mm='0'+mm
+    } 
+    date = yyyy + ". " + mm + ". " + dd;
+    //var today = new Date()
+    //var weekday = new Array(7);
+    //weekday[0]=  "Sunday";
+    //weekday[1] = "Monday";
+    //weekday[2] = "Tuesday";
+    //weekday[3] = "Wednesday";
+    //weekday[4] = "Thursday";
+    //weekday[5] = "Friday";
+    //weekday[6] = "Saturday";
+
+    //var day = weekday[today.getDay()];
+
+    $("#comment_calendar").val(date);
+    $("#datepicker_date_logbook").val(date)
+    //////////////////////////////////
+
+
+    $("#comment_calendar").change(function () {
+        var selectedDate = $("#comment_calendar").val()
+        if (selectedDate == date){
+          return false
+        }
+
         selectedMajorId = window.localStorage.getItem("selectedMajorId");
         var today = new Date()
         var weekday = new Array(7);
@@ -1581,11 +1658,66 @@ function onDeviceReady() {
       .change();
 
 
+  // move logbook
+    $("#datepicker_date_logbook").change(function () {
+        var selectedDate = $("#datepicker_date_logbook").val();
+        if (selectedDate == date){
+          return false
+        }
+        selectedMajorId = window.localStorage.getItem("selectedMajorId");
+        var today = new Date()
+        var weekday = new Array(7);
+        weekday[0]=  "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+        //function parseDate(input) {
+        //  parts = input.split('/');
+        //  // new Date(year, month [, day [, hours[, minutes[, seconds[, ms]]]]])
+        //  return new Date(parts[2], parts[0]-1, parts[1]); // Note: months are 0-based
+        //}
+        //var day = weekday[parseDate($("#datepicker_date_logbook")).getDay()];
+        //$("#datepicker_day_logbook").text(day); 
+         go_logbook(selectedDate);
+      })
+      .change();
+
+    //report
+    tappable('#report_submit' , function(){
+       var formData = new FormData($('#report_form')[0])
+       formData.append("token", user_token)
+       formData.append("major_id", window.localStorage.getItem("selectedMajorId"))
+         $.ajax(
+         {
+            type: "POST",
+            url: host +  '/api/report_process',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+              if (data.error_code == 1){
+                alert("성공적으로 등록되었습니다")
+                go_logbook()
+              }
+            },
+            error: function(data)
+            {
+                alert("등록에 실패하였습니다")
+            }
+         });
+    });
 
   //evaluation
     tappable('#evaluation_submit' , function(){
        var formData = new FormData($('#valuation')[0])
        formData.append("token", user_token)
+       formData.append("major_id", window.localStorage.getItem("selectedMajorId"))
          $.ajax(
          {
             type: "POST",
@@ -1596,11 +1728,12 @@ function onDeviceReady() {
             cache: false,
             contentType: false,
             processData: false,
-            beforeSend: function(data){
-              window.location.replace('pages.html#result_modal');},
             success: function (data) {
               if (data.error_code == 1){
                 alert("성공적으로 등록되었습니다")
+                go_logbook()
+              } else if (data.error_code ==2){
+                alert("성공적으로 수정되었습니다")
                 go_logbook()
               }
             },
