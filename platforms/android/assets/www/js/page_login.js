@@ -1,4 +1,4 @@
-host = "http://asanapp.com:4321"
+host = "http://vetnote.snu.ac.kr"
 
 
 function onNotificationGCM(e) {
@@ -7,7 +7,7 @@ function onNotificationGCM(e) {
     case 'registered':
     if ( e.regid.length > 0 ) {
       $.ajax({
-        url: host + "/user/login_gcm_regi",
+        url: host + "/vetnoteuser/login_gcm_regi",
         type: "POST",
         timeout: 1000,
         data: {
@@ -74,23 +74,29 @@ function login_ajax() {
       if (data.error_code ==1) {
         alert("로그인 성공")
 
-
         //temp_token부여. => 자동 로그인을 위한 게 아니라 gcm regId 등록을 위함
         window.localStorage.setItem("temp_token", data.user_token);
-        //푸시등록
-        $(document).ready(function(){
-          try
-          {
-            pushNotification = window.plugins.pushNotification;
-            pushNotification.register(successHandler, errorHandler, {"senderID":"263938905015","ecb":"onNotificationGCM"});   // required!
-          }
-          catch(err)
-          {
-            txt="There was an error on this page.\n\n";
-            txt+="Error description: " + err.message + "\n\n";
-            alert(txt);
-          }
-        });
+        if ($("#id_form").val() == "test"){
+          var temp_token =window.localStorage.getItem("temp_token");
+          window.localStorage.setItem("user_token",temp_token)
+          parent.location.href = "index.html"
+        } else {
+
+          //푸시등록
+          $(document).ready(function(){
+            try
+            {
+              pushNotification = window.plugins.pushNotification;
+              pushNotification.register(successHandler, errorHandler, {"senderID":"263938905015","ecb":"onNotificationGCM"});   // required!
+            }
+            catch(err)
+            {
+              txt="There was an error on this page.\n\n";
+              txt+="Error description: " + err.message + "\n\n";
+              alert(txt);
+            }
+          });
+        }
       } else if (data.error_code == 2) {
         alert("교수자 계정입니다")
       } else if (data.error_code == 3) {

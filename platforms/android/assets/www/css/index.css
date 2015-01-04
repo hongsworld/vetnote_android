@@ -6,6 +6,9 @@
   -webkit-user-select: none;
   user-select: none;
  }
+ .ui-icon-carat-d::after{
+   background-image:none !important;
+ }
 
 *.tappable-active{
   background-color:#c9c9ca !important;
@@ -217,11 +220,14 @@ div.ui-btn{
 .major_select{
   color:#fff;
 }
+div.body{
+  position:relative;
+}
 iframe.main_frame{
   margin-top:60px;
   position:absolute;
   width:100%;
-  height:175px;
+  height:100%;
   overflow:visible;
   background-color:#fff;
   border:0;

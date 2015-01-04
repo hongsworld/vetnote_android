@@ -95,6 +95,10 @@ div.page_body{
   margin-top:45px;
   padding:12.5px;
 }
+div.page-wrap{
+  position:relative
+}
+
 div.page_body2{
   position:relative;
   padding:12.5px;

@@ -1,4 +1,4 @@
-var host = "http://asanapp.com:4321"
+var host = "http://vetnote.snu.ac.kr"
 var selectedMajor = 11 
 var user_token  = window.localStorage.getItem("user_token")
 

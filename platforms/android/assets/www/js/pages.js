@@ -1,4 +1,4 @@
-var host = "http://asanapp.com:4321"
+var host = 'http://vetnote.snu.ac.kr'
 var user_token  = window.localStorage.getItem("user_token")
 
 var today = new Date()
@@ -23,7 +23,7 @@ today_date = yyyy + ". " + mm + ". " + dd;
         case 'registered':
         if ( e.regid.length > 0 ) {
           $.ajax({
-            url: host + "/user/login_gcm_regi",
+            url: host + "/vetnoteuser/login_gcm_regi",
             type: "POST",
             timeout: 1000,
             data: {
@@ -354,6 +354,9 @@ today_date = yyyy + ". " + mm + ". " + dd;
         if (data.error_code ==1) {
           for (i = 0; i < 10; i++) {
            $("#colum" + (parseInt(i) + 1) ).find(".each_colum_rt").find(".each_colum_rt_txt").text(data.colum[i])
+          }
+          if (data.colum[10] != null){
+            $("#attachedFile").attr("href","#").attr("onclick", "window.open('" + host + "/syllabus_file/" + data.colum[10] + "','_system');").text(data.colum[11])
           }
           location.href = "pages.html#syllabus"
         } else {

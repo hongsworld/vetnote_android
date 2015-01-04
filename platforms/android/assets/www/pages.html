@@ -18,9 +18,6 @@
 </head>
 <body>
 
- 
-
-
 <div data-role="page" id="index">
     <div class = "page-wrap">
       <div class = "page_top">
@@ -221,13 +218,6 @@
 
 
 
-  
-    
-
-    
-
-
-    
 <div data-role="page" id="report" >
 
   <script>
@@ -905,6 +895,188 @@
   </div><!-- page comment_write-->
 
 
+
+
+<div data-role="page" id="comment" temp="원래comment_write였">
+
+  <script>
+          $(document).ready(function(){
+            $(function(){ $("#comment_calendar").mobiscroll($.extend({
+              preset : 'calendar',
+              controls:['calendar'],
+              calendarHeight:['200px']
+              },
+              {
+              theme: "ios7",
+              mode: "scroller",
+              display: "bottom",
+              lang: "english"
+              })
+            );
+            });
+          });
+    </script>   
+    <div class = "page-wrap">
+      <div class = "page_top">
+        <div class = "page_top_by_3" id="logbook_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  로그북
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="comment_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "blue_bottom">
+                </div>
+                <div class = "fit_txt-active">
+                  실습일지
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "page_top_by_3" id="qna_btn">
+          <div class = "page_top_txt outer">
+            <div class = "page_top_txt middle">
+              <div class = "page_top_txt inner">
+                <div class = "fit_txt">
+                  Q&A
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- page top end -->
+      <div class = "page_body">
+        <div class = "comment-label">
+          날짜
+        </div>
+        <div class = "calender_box" style="margin-top:10px;">
+            <input class = "calender_box_rt_txt"  style="text-align:left; color:#9f9fa0; padding:20px;" id = "comment_calendar">
+        </div> <!-- page calender box end -->
+
+        <div class = "comment-label">
+          오늘 로그북
+        </div>
+
+
+        <div id='comment_loglist' >
+
+
+          <div class = 'calender_box' style='margin-top:10px; margin-bottom:0px;'>            
+                    <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:13px 0  13px 10px;'>#1 Epidermal cytology</div>
+                  
+            
+          </div> <!-- page calender box end -->
+
+
+        
+          <div class = 'calender_box' style='margin-top:0px; margin-bottom:0px; border-top:0;'>
+            <div class = 'calender_box-lt'>
+              <div style='padding:13px 0'>
+                케이스번호
+              </div>
+            </div>
+            <div class = 'calender_box-rt'>
+              <div class = 'outer'>
+                <div class = 'middle'>
+                  <div class = ' inner'>
+                    <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:20px;'>8</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- page calender box end -->
+          <div class = 'calender_box' style='margin-top:0px; border-top:0px;min-height:90px; height:auto;'>
+            <div class='log_img' style='position:relative;
+            height:auto; background:black;'>
+            </div>  
+            <script>
+            $(document).ready(function() {
+              $('.log_img').height($('.log_img').width());
+               console.log($('.log_img').width())
+               })
+            </script>
+            <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:20px 20px 20px 40px;  min-height:90px;'>
+              <div style='position:realtive; white-space:pre-line; word-wrap:break-word; '>memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology
+              memo of Epidermal cytology</div> 
+              
+            </div>
+          </div> <!-- page calender box end -->
+
+          <div class = "calender_box" style="margin-top:10px; margin-bottom:20px;">
+            <div class = "outer">
+              <div class = "middle">
+                <div class = " inner">
+                  <div class="calender_box_rt_txt" style="text-align:left; color:#9f9fa0; padding:20px;">작성된 로그북이 없습니다</div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- page calender box end -->
+        
+
+        </div>
+
+
+
+        <div class = "comment-label">
+          성찰일지(느낀점, 더 공부해야할 사항)
+        </div>
+        <div class = "comment_box">
+          <textarea style="padding:20px;" placeholder="성찰일지를 입력해주세요" id="textarea_student_comment1"></textarea>
+        </div>
+
+        <div class = "comment-label">
+          실습 외 활동(세미나 등)
+        </div>
+        <div class = "comment_box">
+          <textarea style="padding:20px" placeholder="실습 외 활동을 작성해주세요" id="textarea_student_comment2"></textarea>
+        </div>
+
+
+        <div class = "calender_box">
+          <div class = "calender_box2_lt" id="cancel_comment">
+            
+                  <div class="calender_box_rt_txt" style="text-align:center;">취소하기</div>
+                
+          </div>
+          <div class = "calender_box2_rt" id="submit_comment">
+          
+                  <div class="calender_box_rt_txt" style="text-align:center;">+ 등록하기</div>
+                
+          </div>
+        </div> <!-- page calender box end -->
+
+      </div> <!-- page body end -->
+
+
+    </div><!-- page wrap -->
+  </div><!-- page comment_write-->
+
+ 
+
+
+
+
+  
+    
+
+    
+
+
+    
+
     
     
     
@@ -1148,6 +1320,28 @@
             </div>
           </div>
 
+          <div class = "each_colum" id="colum10">
+            <div class = "each_colum_lt">
+              <div class = "outer">
+                <div class = "middle">
+                  <div class = "inner">
+                    <div class = "each_colum_lt_txt">
+                      첨부파일
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "each_colum_rt">
+                    <div class = "each_colum_rt_txt">
+                      <a id = "attachedFile">첨부</a>
+                    </div>
+            </div>
+            <div class= "colum_line">
+            </div>
+          </div>
+
+
 
         </div>
 
@@ -1160,173 +1354,6 @@
     
     
     
-<div data-role="page" id="comment" temp="원래comment_write였">
-
-  <script>
-          $(document).ready(function(){
-            $(function(){ $("#comment_calendar").mobiscroll($.extend({
-              preset : 'calendar',
-              controls:['calendar'],
-              calendarHeight:['200px']
-              },
-              {
-              theme: "ios7",
-              mode: "scroller",
-              display: "bottom",
-              lang: "english"
-              })
-            );
-            });
-          });
-    </script>   
-    <div class = "page-wrap">
-      <div class = "page_top">
-        <div class = "page_top_by_3" id="logbook_btn">
-          <div class = "page_top_txt outer">
-            <div class = "page_top_txt middle">
-              <div class = "page_top_txt inner">
-                <div class = "fit_txt">
-                  로그북
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class = "page_top_by_3" id="comment_btn">
-          <div class = "page_top_txt outer">
-            <div class = "page_top_txt middle">
-              <div class = "page_top_txt inner">
-                <div class = "blue_bottom">
-                </div>
-                <div class = "fit_txt-active">
-                  실습일지
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class = "page_top_by_3" id="qna_btn">
-          <div class = "page_top_txt outer">
-            <div class = "page_top_txt middle">
-              <div class = "page_top_txt inner">
-                <div class = "fit_txt">
-                  Q&A
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> <!-- page top end -->
-      <div class = "page_body">
-        <div class = "comment-label">
-          날짜
-        </div>
-        <div class = "calender_box" style="margin-top:10px;">
-            <input class = "calender_box_rt_txt"  style="text-align:left; color:#9f9fa0; padding:20px;" id = "comment_calendar">
-        </div> <!-- page calender box end -->
-
-        <div class = "comment-label">
-          오늘 로그북
-        </div>
-
-
-        <div id='comment_loglist' >
-
-
-          <div class = 'calender_box' style='margin-top:10px; margin-bottom:0px;'>            
-                    <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:13px 0  13px 10px;'>#1 Epidermal cytology</div>
-                  
-            
-          </div> <!-- page calender box end -->
-
-
-        
-          <div class = 'calender_box' style='margin-top:0px; margin-bottom:0px; border-top:0;'>
-            <div class = 'calender_box-lt'>
-              <div style='padding:13px 0'>
-                케이스번호
-              </div>
-            </div>
-            <div class = 'calender_box-rt'>
-              <div class = 'outer'>
-                <div class = 'middle'>
-                  <div class = ' inner'>
-                    <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:20px;'>8</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- page calender box end -->
-          <div class = 'calender_box' style='margin-top:0px; border-top:0px;min-height:90px; height:auto;'>
-            <div class='log_img' style='position:relative;
-            height:auto; background:black;'>
-            </div>  
-            <script>
-            $(document).ready(function() {
-              $('.log_img').height($('.log_img').width());
-               console.log($('.log_img').width())
-               })
-            </script>
-            <div class='calender_box_rt_txt' style='text-align:left; color:#9f9fa0; padding:20px 20px 20px 40px;  min-height:90px;'>
-              <div style='position:realtive; white-space:pre-line; word-wrap:break-word; '>memo of Epidermal cytology
-              memo of Epidermal cytology
-              memo of Epidermal cytology
-              memo of Epidermal cytology
-              memo of Epidermal cytology
-              memo of Epidermal cytology</div> 
-              
-            </div>
-          </div> <!-- page calender box end -->
-
-          <div class = "calender_box" style="margin-top:10px; margin-bottom:20px;">
-            <div class = "outer">
-              <div class = "middle">
-                <div class = " inner">
-                  <div class="calender_box_rt_txt" style="text-align:left; color:#9f9fa0; padding:20px;">작성된 로그북이 없습니다</div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- page calender box end -->
-        
-
-        </div>
-
-
-
-        <div class = "comment-label">
-          성찰일지(느낀점, 더 공부해야할 사항)
-        </div>
-        <div class = "comment_box">
-          <textarea style="padding:20px;" placeholder="성찰일지를 입력해주세요" id="textarea_student_comment1"></textarea>
-        </div>
-
-        <div class = "comment-label">
-          실습 외 활동(세미나 등)
-        </div>
-        <div class = "comment_box">
-          <textarea style="padding:20px" placeholder="실습 외 활동을 작성해주세요" id="textarea_student_comment2"></textarea>
-        </div>
-
-
-        <div class = "calender_box">
-          <div class = "calender_box2_lt" id="cancel_comment">
-            
-                  <div class="calender_box_rt_txt" style="text-align:center;">취소하기</div>
-                
-          </div>
-          <div class = "calender_box2_rt" id="submit_comment">
-          
-                  <div class="calender_box_rt_txt" style="text-align:center;">+ 등록하기</div>
-                
-          </div>
-        </div> <!-- page calender box end -->
-
-      </div> <!-- page body end -->
-
-
-    </div><!-- page wrap -->
-  </div><!-- page comment_write-->
-
 
     
     
@@ -2023,7 +2050,8 @@ hi
               lang: "english"
               })
             );
-            });/*
+            });
+            /*
           var today = new Date()
           var dd = today.getDate();
           var mm = today.getMonth() + 1;
@@ -2047,7 +2075,7 @@ hi
           weekday[6] = "Saturday";
 
           var day = weekday[today.getDay()];
-          /*
+          */
 
           //$("#datepicker_date_comment").val(date);
           // $("#datepicker_day_comment").text(day)
